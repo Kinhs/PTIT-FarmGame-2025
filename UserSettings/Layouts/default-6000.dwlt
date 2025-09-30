@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Tile Palette
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 104
+  controlID: 109
   draggingID: 0
 --- !u!114 &3
 MonoBehaviour:
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: InspectorWindow
+  m_Name: GridPaintPaletteWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -69,14 +69,14 @@ MonoBehaviour:
     y: 0
     width: 454
     height: 941
-  m_MinSize: {x: 276, y: 76}
+  m_MinSize: {x: 357, y: 226}
   m_MaxSize: {x: 4001, y: 4026}
-  m_ActualView: {fileID: 14}
+  m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 14}
   - {fileID: 12}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -403,14 +403,14 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Tiles/Outdoor Ground
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: D:\Unity\Farming Game
+  m_LastProjectPath: D:\Unity\PTIT-FarmGame-2025
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 229a0000
-    m_LastClickedID: 39458
-    m_ExpandedIDs: 00000000d6980000d8980000da980000dc980000de98000000ca9a3bffffff7f
+    m_SelectedIDs: 049a0000
+    m_LastClickedID: 39428
+    m_ExpandedIDs: 00000000cc980000ce98000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -439,7 +439,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000d6980000d8980000da980000dc980000de980000
+    m_ExpandedIDs: 00000000cc980000ce980000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -568,9 +568,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 00fbffff
+      m_SelectedIDs: 54980000
+      m_LastClickedID: 38996
+      m_ExpandedIDs: 06fbffff66980000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1062,9 +1062,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 15.172202, y: -12.249567, z: -0.09420259}
+    m_Target: {x: 25.524788, y: -16.401129, z: -0.13428898}
     speed: 2
-    m_Value: {x: 15.172202, y: -12.249567, z: -0.09420259}
+    m_Value: {x: 25.524788, y: -16.401129, z: -0.13428898}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1100,7 +1100,7 @@ MonoBehaviour:
       m_Size: {x: 1, y: 1}
     zGrid:
       m_Fade:
-        m_Target: 1
+        m_Target: 0
         speed: 2
         m_Value: 1
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
@@ -1114,9 +1114,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 19.420202
+    m_Target: 23.428791
     speed: 2
-    m_Value: 19.420202
+    m_Value: 23.428791
   m_Ortho:
     m_Target: 1
     speed: 2
