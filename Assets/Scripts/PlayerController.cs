@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
 
     public InputActionReference moveInput;
+
+    public Animator anim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,6 +19,19 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //theRB.linearVelocity = new Vector2(moveSpeed, 0f);
-        theRB.linearVelocity = moveInput.action.ReadValue<Vector2>() * moveSpeed;
+        theRB.linearVelocity = moveInput.action.ReadValue<Vector2>().normalized * moveSpeed;
+
+        if (theRB.linearVelocity.x < 0f)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else if (theRB.linearVelocity.x > 0f)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+
+
+
+        anim.SetFloat("speed", theRB.linearVelocity.magnitude);
     }
 }
