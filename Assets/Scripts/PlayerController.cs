@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D theRB;
     public float moveSpeed;
 
-    public InputActionReference moveInput;
+    public InputActionReference moveInput, actioninput;
 
     public Animator anim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -30,8 +30,20 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
 
-
+        if (actioninput.action.WasPressedThisFrame())
+        {
+            UseTool();
+        }
 
         anim.SetFloat("speed", theRB.linearVelocity.magnitude);
+    }
+
+    void UseTool()
+    {
+        GrowBlock block = null;
+
+        block =FindFirstObjectByType<GrowBlock>();
+
+        block.PloughSoil();
     }
 }

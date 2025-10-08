@@ -31563,6 +31563,7 @@ MonoBehaviour:
   theRB: {fileID: 1047367167}
   moveSpeed: 8
   moveInput: {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  actioninput: {fileID: 1120369429361536294, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   anim: {fileID: 82952641}
 --- !u!70 &1047367169
 CapsuleCollider2D:
