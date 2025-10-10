@@ -10,7 +10,7 @@ public class GrowBlock : MonoBehaviour
     {
         barren,
         ploughed,
-        plated,
+        planted,
         growing1,
         growing2,
         ripe
@@ -22,7 +22,12 @@ public class GrowBlock : MonoBehaviour
     public SpriteRenderer theSR;
     public Sprite soilTilled, soilWatered;
 
+    public SpriteRenderer cropSR;
+    public Sprite cropPlanted, cropGrowing1, cropGrowing2, cropRipe;
+
     public bool isWatered;
+
+    private bool isPlanted;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -82,6 +87,42 @@ public class GrowBlock : MonoBehaviour
         isWatered = true;
 
         SetSoilSprite();
+    }
+
+    public void PlantCrop()
+    {
+        if (currentStage == GrowthStage.ploughed && isWatered == true)
+        {
+            currentStage = GrowthStage.planted;
+
+            UpdateCropSprite();
+        }
+    }
+
+    void UpdateCropSprite()
+    {
+        switch (currentStage)
+        {
+            case GrowthStage.planted:
+                cropSR.sprite = cropPlanted;
+
+                break;
+
+            case GrowthStage.growing1:
+                cropSR.sprite = cropGrowing1;
+
+                break;
+
+            case GrowthStage.growing2:
+                cropSR.sprite = cropGrowing2;
+
+                break;
+
+            case GrowthStage.ripe:
+                cropSR.sprite = cropRipe;
+
+                break;
+        }
     }
 }
 
