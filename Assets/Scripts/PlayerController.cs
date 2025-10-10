@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
                     break;
 
                 case ToolType.wateringCan:
-
+                    block.WaterSoil();
                     break;
 
                 case ToolType.seeds:

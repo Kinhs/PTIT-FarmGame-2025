@@ -3800,7 +3800,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrowBlock
   currentStage: 0
   theSR: {fileID: 538209465}
-  soiltilled: {fileID: 6563066755110389082, guid: 290be3330cf84bc4d93460bae4e8d47f, type: 3}
+  soilTilled: {fileID: 6563066755110389082, guid: 290be3330cf84bc4d93460bae4e8d47f, type: 3}
+  soilWatered: {fileID: 8400690069364028037, guid: 290be3330cf84bc4d93460bae4e8d47f, type: 3}
+  isWatered: 0
 --- !u!1 &74473731
 GameObject:
   m_ObjectHideFlags: 0
@@ -3977,7 +3979,7 @@ Animator:
   m_GameObject: {fileID: 82952638}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 02a93e2fc49be0648b2b3b4c5e705d31, type: 2}
+  m_Controller: {fileID: 9100000, guid: a557f74aa4134ec49863121393abdd19, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
