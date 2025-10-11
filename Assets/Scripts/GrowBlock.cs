@@ -148,5 +148,17 @@ public class GrowBlock : MonoBehaviour
             }
         }
     }
+
+    public void HarvestCrop()
+    {
+        if (currentStage == GrowthStage.ripe)
+        {
+            currentStage = GrowthStage.ploughed;
+
+            SetSoilSprite();
+
+            cropSR.sprite = null;
+        }
+    }
 }
 
