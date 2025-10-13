@@ -11,6 +11,8 @@ public class GridController : MonoBehaviour
 
     public List<BlockRow> blockRows = new List<BlockRow>();
 
+    public LayerMask gridBlockers;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,6 +46,12 @@ public class GridController : MonoBehaviour
                 newBlock.transform.SetParent(transform);
 
                 blockRows[y].blocks.Add(newBlock);
+
+                if (Physics2D.OverlapBox(newBlock.transform.position, new Vector2(.9f, .9f), 0f, gridBlockers))
+                {
+                    newBlock.theSR.sprite = null;
+                    newBlock.preventUse = true;
+                }
             }
         }
 
