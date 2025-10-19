@@ -3,15 +3,25 @@ using UnityEngine.SceneManagement;
 
 public class AreaSwitcher : MonoBehaviour
 {
+    public string sceneToLoad;
 
     public Transform startPoint;
 
 
-    public string sceneToLoad;
+    public string transitionName;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        PlayerController.instance.transform.position = startPoint.position;
+
+        if (PlayerPrefs.HasKey("Transition"))
+        {
+            if (PlayerPrefs.GetString("Transition") == transitionName)
+            {
+                PlayerController.instance.transform.position = startPoint.position;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -27,6 +37,8 @@ public class AreaSwitcher : MonoBehaviour
             //Debug.Log("Player entered area: ");
 
             SceneManager.LoadScene(sceneToLoad);
+
+            PlayerPrefs.SetString("Transition", transitionName);
         }
     }
 }
