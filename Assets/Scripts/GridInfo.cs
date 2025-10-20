@@ -36,7 +36,14 @@ public class GridInfo : MonoBehaviour
             }
         }
     }
+
+    public void UpdateInfo(GrowBlock theBlock, int xPos, int yPos)
+    {
+        theGrid[yPos].blocks[xPos].currentStage = theBlock.currentStage;
+        theGrid[yPos].blocks[xPos].isWaterd = theBlock.isWatered;
+    }
 }
+
 
 [System.Serializable]
 public class BlockInfo
