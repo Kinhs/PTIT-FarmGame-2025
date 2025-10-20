@@ -114,25 +114,32 @@ public class PlayerController : MonoBehaviour
             UIController.instance.SwitchTool((int) currentTool);
         }
 
-
-        if (actioninput.action.WasPressedThisFrame())
-        {
-            UseTool();
-        }
-
         anim.SetFloat("speed", theRB.linearVelocity.magnitude);
 
-        toolIndicator.position = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        toolIndicator.position = new Vector3(toolIndicator.position.x, toolIndicator.position.y, 0f);
-
-        if(Vector3.Distance(toolIndicator.position, transform.position) > toolRange)
+        if (GridController.instance != null)
         {
-            Vector2 direction = toolIndicator.position - transform.position;
-            direction = direction.normalized * toolRange;
-            toolIndicator.position = transform.position + new Vector3(direction.x ,direction.y ,0f);
-        }
+            if (actioninput.action.WasPressedThisFrame())
+            {
+                UseTool();
+            }
 
-        toolIndicator.position = new Vector3(Mathf.FloorToInt(toolIndicator.position.x) + .5f, Mathf.FloorToInt(toolIndicator.position.y) + .5f, 0f);
+
+            toolIndicator.position = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            toolIndicator.position = new Vector3(toolIndicator.position.x, toolIndicator.position.y, 0f);
+
+            if (Vector3.Distance(toolIndicator.position, transform.position) > toolRange)
+            {
+                Vector2 direction = toolIndicator.position - transform.position;
+                direction = direction.normalized * toolRange;
+                toolIndicator.position = transform.position + new Vector3(direction.x, direction.y, 0f);
+            }
+
+            toolIndicator.position = new Vector3(Mathf.FloorToInt(toolIndicator.position.x) + .5f, Mathf.FloorToInt(toolIndicator.position.y) + .5f, 0f);
+        }
+        else
+        {
+            toolIndicator.position = new Vector3(0, 0, -20f);
+        }
     }
 
     void UseTool()
