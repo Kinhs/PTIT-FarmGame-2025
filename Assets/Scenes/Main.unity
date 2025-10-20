@@ -34809,6 +34809,52 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.7276487, y: 3.1234097}
   m_EdgeRadius: 0
+--- !u!1 &2016075368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2016075370}
+  - component: {fileID: 2016075369}
+  m_Layer: 0
+  m_Name: GridInfo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2016075369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016075368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dce760905ed04e4b87a8e9f8eaa9f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridInfo
+  hasGrid: 0
+  theGrid: []
+--- !u!4 &2016075370
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016075368}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.00538, y: 0.52149, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2045467903
 GameObject:
   m_ObjectHideFlags: 0
@@ -35213,3 +35259,4 @@ SceneRoots:
   - {fileID: 1240599833}
   - {fileID: 8460313624935814009}
   - {fileID: 1476196749}
+  - {fileID: 2016075370}
