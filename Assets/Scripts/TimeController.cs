@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TimeController : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class TimeController : MonoBehaviour
 
     public int currentDay = 1;
 
+    public string dayEndScene;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -39,6 +42,9 @@ public class TimeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!timeActive) 
+            return;
+
         currentTime += Time.deltaTime * timeSpeed;
 
         if (currentTime > dayEnd)
@@ -64,7 +70,8 @@ public class TimeController : MonoBehaviour
             GridInfo.instance.GrowCrop();
         }
 
-        StartDay();
+        //StartDay();
+        SceneManager.LoadScene(dayEndScene);
     }
 
     public void StartDay()

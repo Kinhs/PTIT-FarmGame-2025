@@ -32735,6 +32735,8 @@ MonoBehaviour:
   dayStart: 7
   dayEnd: 26
   timeSpeed: 0.25
+  currentDay: 1
+  dayEndScene: Day End
 --- !u!4 &901394423
 Transform:
   m_ObjectHideFlags: 0
