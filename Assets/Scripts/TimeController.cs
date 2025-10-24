@@ -38,5 +38,10 @@ public class TimeController : MonoBehaviour
         {
             currentTime = dayEnd;
         }
+
+        if (UIController.instance != null )
+        {
+            UIController.instance.UpdateTimeText(currentTime);
+        }
     }
 }
