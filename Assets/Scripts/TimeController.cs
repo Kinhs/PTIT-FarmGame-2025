@@ -23,7 +23,7 @@ public class TimeController : MonoBehaviour
 
     public float dayStart, dayEnd;
 
-    public float timeSpeed = .25f;
+    public float timeSpeed = .1f;
 
     private bool timeActive;
 
@@ -69,6 +69,8 @@ public class TimeController : MonoBehaviour
         {
             GridInfo.instance.GrowCrop();
         }
+
+        PlayerPrefs.SetString("Transition", "Wake Up");
 
         //StartDay();
         SceneManager.LoadScene(dayEndScene);
