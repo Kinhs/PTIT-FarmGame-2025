@@ -34,6 +34,7 @@ public class GrowBlock : MonoBehaviour
     private Vector2Int gridPosition;
 
     public CropController.CropType cropType;
+    public float growFailChance;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -116,6 +117,8 @@ public class GrowBlock : MonoBehaviour
             currentStage = GrowthStage.planted;
 
             cropType = cropToPlant;
+
+            growFailChance = CropController.instance.GetCropInfo(cropType).growthFailChance;
 
             UpdateCropSprite();
         }

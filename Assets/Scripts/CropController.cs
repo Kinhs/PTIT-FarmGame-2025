@@ -84,4 +84,7 @@ public class CropInfo
     public Sprite finalCrop, seedType, planted, growStage1, growStage2, ripe;
 
     public int seedAmount, cropAmount;
+
+    [Range(0f, 100f)]
+    public float growthFailChance;
 }
