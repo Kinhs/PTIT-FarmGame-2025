@@ -33,6 +33,8 @@ public class GrowBlock : MonoBehaviour
 
     private Vector2Int gridPosition;
 
+    public CropController.CropType cropType;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -107,11 +109,13 @@ public class GrowBlock : MonoBehaviour
         }
     }
 
-    public void PlantCrop()
+    public void PlantCrop(CropController.CropType cropToPlant)
     {
         if (currentStage == GrowthStage.ploughed && isWatered == true && preventUse == false)
         {
             currentStage = GrowthStage.planted;
+
+            cropType = cropToPlant;
 
             UpdateCropSprite();
         }
@@ -119,25 +123,28 @@ public class GrowBlock : MonoBehaviour
 
     public void UpdateCropSprite()
     {
+        CropInfo activeCrop = CropController.instance.GetCropInfo(cropType);
+
         switch (currentStage)
         {
             case GrowthStage.planted:
-                cropSR.sprite = cropPlanted;
+                //cropSR.sprite = cropPlanted;
+                cropSR.sprite = activeCrop.planted;
 
                 break;
 
             case GrowthStage.growing1:
-                cropSR.sprite = cropGrowing1;
+                cropSR.sprite = activeCrop.growStage1;
 
                 break;
 
             case GrowthStage.growing2:
-                cropSR.sprite = cropGrowing2;
+                cropSR.sprite = activeCrop.growStage2;
 
                 break;
 
             case GrowthStage.ripe:
-                cropSR.sprite = cropRipe;
+                cropSR.sprite = activeCrop.ripe;
 
                 break;
         }

@@ -31,7 +31,28 @@ public class CropController : MonoBehaviour
         avocado
     }
 
-   public List<CropInfo> cropList = new List<CropInfo>();
+    public List<CropInfo> cropList = new List<CropInfo>();
+
+    public CropInfo GetCropInfo(CropType cropToGet)
+    {
+        int position = -1;
+
+        for (int i = 0; i < cropList.Count; i++)
+        {
+            if (cropList[i].cropType == cropToGet)
+            {
+                position = i;
+            }
+        }
+
+        if (position >= 0)
+        {
+            return cropList[position];
+        } else
+        {
+            return null;
+        }
+    }
 }
 
 [System.Serializable]
