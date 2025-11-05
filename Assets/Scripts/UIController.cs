@@ -6,12 +6,6 @@ public class UIController : MonoBehaviour
 {
     public static UIController instance;
 
-    public GameObject[] toolbarActivatorIcons;
-
-    public TMP_Text timeText;
-
-    public InventoryController theIC;
-
     private void Awake()
     {
         if (instance == null)
@@ -24,6 +18,11 @@ public class UIController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public GameObject[] toolbarActivatorIcons;
+
+    public TMP_Text timeText;
+
+    public InventoryController theIC;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
