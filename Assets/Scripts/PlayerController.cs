@@ -54,6 +54,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(UIController.instance != null)
+        {
+            if(UIController.instance.theIC != null)
+            {
+                if(UIController.instance.theIC.gameObject.activeSelf == true)
+                {
+                    theRB.linearVelocity = Vector2.zero;
+                    return;
+                }    
+            }
+        }
+
         if (toolWaitCounter > 0)
         {
             toolWaitCounter -= Time.deltaTime;
@@ -176,7 +188,7 @@ public class PlayerController : MonoBehaviour
                     {
                         block.PlantCrop(seedCropType);
 
-                        CropController.instance.UseSeed(seedCropType);
+                        //CropController.instance.UseSeed(seedCropType);
                     }
                     break;
 
