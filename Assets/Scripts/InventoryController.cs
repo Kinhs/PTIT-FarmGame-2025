@@ -4,6 +4,7 @@ public class InventoryController : MonoBehaviour
 {
 
     public SeedDisplay[] seeds;
+    public CropDisplay[] crops;
 
     public void OpenClose()
     {
@@ -32,7 +33,12 @@ public class InventoryController : MonoBehaviour
                 seed.UpdateDisplay();
             }
         }
-        
+        foreach (CropDisplay crop in crops)
+        { 
+                crop.UpdateDisplay();
+        }
+
     }
+
 }
 
