@@ -186,4 +186,10 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+
+    public void SwitchSeed(CropController.CropType newSeed)
+    {
+        seedCropType = newSeed;
+    }
 }

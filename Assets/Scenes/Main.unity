@@ -40656,6 +40656,7 @@ MonoBehaviour:
   - {fileID: 1253654391}
   timeText: {fileID: 694117728}
   theIC: {fileID: 675920650}
+  seedImage: {fileID: 1438883957}
 --- !u!1 &2111399558
 GameObject:
   m_ObjectHideFlags: 0
