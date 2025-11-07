@@ -33600,6 +33600,8 @@ MonoBehaviour:
     seedAmount: 5
     cropAmount: 0
     growthFailChance: 20
+    seedPrice: 1
+    cropPrice: 2
   - cropType: 1
     finalCrop: {fileID: 5508725064705088119, guid: 688a17423db43294093ccb5c6916461b, type: 3}
     seedType: {fileID: 2614870373251885436, guid: 688a17423db43294093ccb5c6916461b, type: 3}
@@ -33610,6 +33612,8 @@ MonoBehaviour:
     seedAmount: 5
     cropAmount: 0
     growthFailChance: 20
+    seedPrice: 2
+    cropPrice: 4
   - cropType: 2
     finalCrop: {fileID: -68751727340038015, guid: 688a17423db43294093ccb5c6916461b, type: 3}
     seedType: {fileID: -2693009140137883590, guid: 688a17423db43294093ccb5c6916461b, type: 3}
@@ -33620,6 +33624,8 @@ MonoBehaviour:
     seedAmount: 5
     cropAmount: 0
     growthFailChance: 40
+    seedPrice: 3
+    cropPrice: 5
   - cropType: 3
     finalCrop: {fileID: 6099581493293703690, guid: 688a17423db43294093ccb5c6916461b, type: 3}
     seedType: {fileID: -956252262595852801, guid: 688a17423db43294093ccb5c6916461b, type: 3}
@@ -33630,6 +33636,8 @@ MonoBehaviour:
     seedAmount: 5
     cropAmount: 0
     growthFailChance: 50
+    seedPrice: 4
+    cropPrice: 7
   - cropType: 4
     finalCrop: {fileID: -5428206428529569624, guid: 688a17423db43294093ccb5c6916461b, type: 3}
     seedType: {fileID: 6738218706411903907, guid: 688a17423db43294093ccb5c6916461b, type: 3}
@@ -33640,6 +33648,8 @@ MonoBehaviour:
     seedAmount: 5
     cropAmount: 0
     growthFailChance: 50
+    seedPrice: 5
+    cropPrice: 9
   - cropType: 5
     finalCrop: {fileID: -7833671090200325546, guid: 688a17423db43294093ccb5c6916461b, type: 3}
     seedType: {fileID: -6338023803479276477, guid: 688a17423db43294093ccb5c6916461b, type: 3}
@@ -33650,6 +33660,8 @@ MonoBehaviour:
     seedAmount: 5
     cropAmount: 0
     growthFailChance: 60
+    seedPrice: 6
+    cropPrice: 12
   - cropType: 6
     finalCrop: {fileID: 5860025163644826426, guid: 688a17423db43294093ccb5c6916461b, type: 3}
     seedType: {fileID: 4533227004153260592, guid: 688a17423db43294093ccb5c6916461b, type: 3}
@@ -33660,6 +33672,8 @@ MonoBehaviour:
     seedAmount: 5
     cropAmount: 0
     growthFailChance: 70
+    seedPrice: 7
+    cropPrice: 15
   - cropType: 7
     finalCrop: {fileID: -7583409310137716746, guid: 688a17423db43294093ccb5c6916461b, type: 3}
     seedType: {fileID: -4538752222985096420, guid: 688a17423db43294093ccb5c6916461b, type: 3}
@@ -33670,6 +33684,8 @@ MonoBehaviour:
     seedAmount: 5
     cropAmount: 0
     growthFailChance: 70
+    seedPrice: 8
+    cropPrice: 18
 --- !u!4 &324977363
 Transform:
   m_ObjectHideFlags: 0
@@ -34982,6 +34998,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588022139}
   m_CullTransparentMesh: 1
+--- !u!1 &588789191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 588789192}
+  m_Layer: 0
+  m_Name: Currency Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &588789192
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588789191}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.67674, y: -4.76485, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &592102676
 GameObject:
   m_ObjectHideFlags: 0
@@ -45327,3 +45374,4 @@ SceneRoots:
   - {fileID: 2016075370}
   - {fileID: 901394423}
   - {fileID: 324977363}
+  - {fileID: 588789192}
