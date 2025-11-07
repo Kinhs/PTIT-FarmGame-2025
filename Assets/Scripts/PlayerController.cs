@@ -45,9 +45,13 @@ public class PlayerController : MonoBehaviour
 
     public CropController.CropType seedCropType;
 
+    private bool isWalkingSFXPlayed;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        isWalkingSFXPlayed = false;
+
         UIController.instance.SwitchTool((int)currentTool);
 
         UIController.instance.SwitchSeed(seedCropType);
@@ -148,7 +152,24 @@ public class PlayerController : MonoBehaviour
             UIController.instance.SwitchTool((int) currentTool);
         }
 
-        anim.SetFloat("speed", theRB.linearVelocity.magnitude);
+        float speed = theRB.linearVelocity.magnitude;
+        anim.SetFloat("speed", speed);
+        if (speed > 0)
+        {
+            if (isWalkingSFXPlayed == false)
+            {
+                AudioManager.instance.PlaySFX(1);
+                isWalkingSFXPlayed = true;
+            }
+        }
+        else
+        {
+            if (isWalkingSFXPlayed == true)
+            {
+                AudioManager.instance.StopSFX(1);
+                isWalkingSFXPlayed = false;
+            }
+        }
 
         if (GridController.instance != null)
         {
@@ -195,11 +216,13 @@ public class PlayerController : MonoBehaviour
                 case ToolType.plough:
                     block.PloughSoil();
                     anim.SetTrigger("usePlough");
+                    AudioManager.instance.PlaySFXPitchAdjusted(2);
                     break;
 
                 case ToolType.wateringCan:
                     block.WaterSoil();
                     anim.SetTrigger("useWateringCan");
+                    AudioManager.instance.PlaySFXPitchAdjusted(0);
                     break;
 
                 case ToolType.seeds:
@@ -214,6 +237,7 @@ public class PlayerController : MonoBehaviour
 
                 case ToolType.basket:
                     block.HarvestCrop();
+                    AudioManager.instance.PlaySFXPitchAdjusted(4);
                     break;
             }
         }
