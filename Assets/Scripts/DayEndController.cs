@@ -17,6 +17,7 @@ public class DayEndController : MonoBehaviour
         {
             dayText.text = "- Day " + TimeController.instance.currentDay + " -";
         }
+        AudioManager.instance.PlaySFXPitchAdjusted(5);
     }
 
     private void Update()

@@ -35,6 +35,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource[] bgMusic;
     private int currentTrack;
 
+    public AudioSource[] sfx;
+
     public void StopMusic()
     {
         foreach (AudioSource track in bgMusic)
@@ -63,5 +65,23 @@ public class AudioManager : MonoBehaviour
         }
 
         bgMusic[currentTrack].Play();
+    }
+
+    public void PlaySFX(int sfxToPlay)
+    {
+        sfx[sfxToPlay].Stop();
+        sfx[sfxToPlay].Play();
+    }
+
+    public void StopSFX(int sfxToStop)
+    {
+        sfx[sfxToStop].Stop();
+    }
+
+    public void PlaySFXPitchAdjusted(int sfxToPlay)
+    {
+        sfx[sfxToPlay].pitch = Random.Range(0.8f, 1.2f);
+
+        PlaySFX(sfxToPlay);
     }
 }

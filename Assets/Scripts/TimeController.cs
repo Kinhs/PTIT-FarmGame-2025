@@ -81,5 +81,6 @@ public class TimeController : MonoBehaviour
         timeActive = true;
 
         currentTime = dayStart;
+        AudioManager.instance.PlaySFXPitchAdjusted(7);
     }
 }
