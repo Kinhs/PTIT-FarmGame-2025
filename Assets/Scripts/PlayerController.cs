@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         UIController.instance.SwitchTool((int)currentTool);
+
+        UIController.instance.SwitchSeed(seedCropType);
     }
 
     // Update is called once per frame
@@ -63,6 +65,15 @@ public class PlayerController : MonoBehaviour
                     theRB.linearVelocity = Vector2.zero;
                     return;
                 }    
+            }
+
+            if (UIController.instance.theShop != null)
+            {
+                if (UIController.instance.theShop.gameObject.activeSelf == true)
+                {
+                    theRB.linearVelocity = Vector2.zero;
+                    return;
+                }
             }
         }
 
