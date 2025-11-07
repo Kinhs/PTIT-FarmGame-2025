@@ -216,13 +216,11 @@ public class PlayerController : MonoBehaviour
                 case ToolType.plough:
                     block.PloughSoil();
                     anim.SetTrigger("usePlough");
-                    AudioManager.instance.PlaySFXPitchAdjusted(2);
                     break;
 
                 case ToolType.wateringCan:
                     block.WaterSoil();
                     anim.SetTrigger("useWateringCan");
-                    AudioManager.instance.PlaySFXPitchAdjusted(0);
                     break;
 
                 case ToolType.seeds:
@@ -237,7 +235,6 @@ public class PlayerController : MonoBehaviour
 
                 case ToolType.basket:
                     block.HarvestCrop();
-                    AudioManager.instance.PlaySFXPitchAdjusted(4);
                     break;
             }
         }
