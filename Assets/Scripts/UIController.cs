@@ -39,6 +39,8 @@ public class UIController : MonoBehaviour
     public Image fadeScreen;
     public float fadeSpeed = 2f;
 
+    public GameObject tutorialPopup;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -151,5 +153,17 @@ public class UIController : MonoBehaviour
         originalColor.a = 0f;
         fadeScreen.color = originalColor;
         fadeScreen.gameObject.SetActive(false);
+    }
+
+    public void ShowHideTutorial()
+    {
+        if (tutorialPopup.activeSelf == false)
+        {
+            tutorialPopup.SetActive(true);
+        }
+        else
+        {
+            tutorialPopup.SetActive(false);
+        }
     }
 }

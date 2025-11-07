@@ -5,6 +5,8 @@ public class MenuController : MonoBehaviour
 {
     public string levelToStart;
 
+    public GameObject tutorialPopup;
+
     public void PlayGame()
     {
         SceneManager.LoadScene(levelToStart);
@@ -16,12 +18,19 @@ public class MenuController : MonoBehaviour
         Debug.Log("Quitting the game...");
     }
 
-    public void ShowTutorial()
+    public void ShowHideTutorial()
     {
-
+        if (tutorialPopup.activeSelf == false)
+        {
+            tutorialPopup.SetActive(true);
+        }
+        else
+        {
+            tutorialPopup.SetActive(false);
+        }
     }
 
-    public void ShowSetting()
+    public void ShowHideSetting()
     {
 
     }
