@@ -179,6 +179,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Area Switcher
       objectReference: {fileID: 0}
+    - target: {fileID: 6729953593403993864, guid: 0427251303bdb2a4195c368bfc62ea37, type: 3}
+      propertyPath: m_Size.x
+      value: 2.0019612
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729953593403993864, guid: 0427251303bdb2a4195c368bfc62ea37, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.045543432
+      objectReference: {fileID: 0}
     - target: {fileID: 6770374635219124619, guid: 0427251303bdb2a4195c368bfc62ea37, type: 3}
       propertyPath: sceneToLoad
       value: Main

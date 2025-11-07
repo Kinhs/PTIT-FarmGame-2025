@@ -24,6 +24,7 @@ public class UIController : MonoBehaviour
     public TMP_Text timeText;
 
     public InventoryController theIC;
+    public ShopController theShop;
 
     public Image seedImage;
 
@@ -39,6 +40,11 @@ public class UIController : MonoBehaviour
         if(Keyboard.current.iKey.wasPressedThisFrame)
         {
             theIC.OpenClose();
+        }
+
+        if (Keyboard.current.bKey.wasPressedThisFrame)
+        {
+            theShop.OpenClose();
         }
     }
 
