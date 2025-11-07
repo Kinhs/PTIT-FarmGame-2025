@@ -7,9 +7,16 @@ public class MenuController : MonoBehaviour
 
     public GameObject tutorialPopup;
 
+    private void Start()
+    {
+        AudioManager.instance.PlayTitle();
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadScene(levelToStart);
+
+        AudioManager.instance.PlayNextBGM();
     }
 
     public void QuitGame()
