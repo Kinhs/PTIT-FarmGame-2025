@@ -4219,8 +4219,8 @@ MonoBehaviour:
   titleText: {fileID: 1905582792}
   backgroundImage: {fileID: 1857985903}
   fadeSpeed: 0.7
-  moveSpeed: 200
-  startYOffset: -300
+  moveSpeed: 300
+  startYOffset: -450
 --- !u!114 &2071811788
 MonoBehaviour:
   m_ObjectHideFlags: 0
