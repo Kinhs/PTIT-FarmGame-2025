@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         wateringCan,
         seeds,
         basket,
-        fishing_rod
+        fishingRod
     }
 
     public ToolType currentTool;
@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
     public float toolRange = 3f;
 
     public CropController.CropType seedCropType;
+
+    public GameObject fishingRod;
 
     private bool isWalkingSFXPlayed;
 
@@ -147,9 +149,12 @@ public class PlayerController : MonoBehaviour
         }
         if (Keyboard.current.digit5Key.wasPressedThisFrame)
         {
-            currentTool = ToolType.fishing_rod;
+            currentTool = ToolType.fishingRod;
             hasSwitchedTool = true;
         }
+
+        if (currentTool != ToolType.fishingRod && fishingRod.activeSelf == true) fishingRod.SetActive(false);
+        if (currentTool == ToolType.fishingRod && fishingRod.activeSelf == false) fishingRod.SetActive(true);
 
         if (hasSwitchedTool == true)
         {
