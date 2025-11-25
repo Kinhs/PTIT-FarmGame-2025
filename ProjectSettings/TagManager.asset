@@ -45,6 +45,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Building
+    uniqueID: 1679472013
+    locked: 0
   - name: Crops
     uniqueID: 3890121721
     locked: 0
