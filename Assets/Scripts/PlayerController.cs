@@ -32,7 +32,8 @@ public class PlayerController : MonoBehaviour
         plough,
         wateringCan,
         seeds,
-        basket
+        basket,
+        fishing_rod
     }
 
     public ToolType currentTool;
@@ -117,7 +118,7 @@ public class PlayerController : MonoBehaviour
         {
             currentTool++;
 
-            if ((int) currentTool >= 4)
+            if ((int) currentTool >= 5)
             {
                 currentTool = ToolType.plough;
             }
@@ -142,6 +143,11 @@ public class PlayerController : MonoBehaviour
         if (Keyboard.current.digit4Key.wasPressedThisFrame)
         {
             currentTool = ToolType.basket;
+            hasSwitchedTool = true;
+        }
+        if (Keyboard.current.digit5Key.wasPressedThisFrame)
+        {
+            currentTool = ToolType.fishing_rod;
             hasSwitchedTool = true;
         }
 
