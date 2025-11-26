@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a8626ddf78aea5d4ea8f0c4ba33f136c
+guid: 05a0ef7d2a8a194418566e331cc80540
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3609805151438244274
-    second: Bridge_Stone_Horizontal_0
+      213: -1048256377991081881
+    second: fishing_float_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bridge_Stone_Horizontal_0
+      name: fishing_float_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 192
-        height: 112
+        width: 4
+        height: 4
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e46f520275567edc0800000000000000
-      internalID: -3609805151438244274
+      spriteID: 760dd4cc068d371f0800000000000000
+      internalID: -1048256377991081881
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bridge_Stone_Horizontal_0: -3609805151438244274
+      fishing_float_0: -1048256377991081881
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -27,6 +27,7 @@ public class UIController : MonoBehaviour
 
     public InventoryController theIC;
     public ShopController theShop;
+    public FishShopController fishShop;
 
     public Image seedImage;
 

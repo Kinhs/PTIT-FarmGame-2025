@@ -3,6 +3,14 @@ using UnityEngine.InputSystem;
 
 public class ShopActivator : MonoBehaviour
 {
+    public enum ShopType
+    {
+        plant,
+        fish
+    }
+
+    public ShopType type;
+
     private bool canOpen;
 
     private void Update()
@@ -11,9 +19,21 @@ public class ShopActivator : MonoBehaviour
         {
             if (Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.eKey.wasPressedThisFrame)
             {
-                if (UIController.instance.theShop.gameObject.activeSelf == false)
+                switch (type)
                 {
-                    UIController.instance.theShop.OpenClose();
+                    case ShopType.plant:
+                        if (UIController.instance.theShop.gameObject.activeSelf == false)
+                        {
+                            UIController.instance.theShop.OpenClose();
+                        }
+                        break;
+
+                    case ShopType.fish:
+                        if (UIController.instance.fishShop.gameObject.activeSelf == false)
+                        {
+                            UIController.instance.fishShop.OpenClose();
+                        }
+                        break;
                 }
             }
         }

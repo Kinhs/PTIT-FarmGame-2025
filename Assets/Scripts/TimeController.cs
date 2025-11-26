@@ -66,7 +66,7 @@ public class TimeController : MonoBehaviour
         if (currentTime > dayEnd)
         {
             currentTime = dayEnd;
-            EndDay();
+            //EndDay();
         }
 
         if (UIController.instance != null)
