@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 public class PlayerController : MonoBehaviour
 {
@@ -48,9 +49,12 @@ public class PlayerController : MonoBehaviour
 
     public GameObject fishingRod;
 
+    public FishingRodController fishingRodController;
+
     private bool isWalkingSFXPlayed;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         isWalkingSFXPlayed = false;
@@ -103,64 +107,73 @@ public class PlayerController : MonoBehaviour
             //theRB.linearVelocity = new Vector2(moveSpeed, 0f);
             theRB.linearVelocity = moveInput.action.ReadValue<Vector2>().normalized * moveSpeed;
 
-            if (theRB.linearVelocity.x < 0f)
+            if (!fishingRodController.isCast)
             {
-                transform.localScale = new Vector3(-1f, 1f, 1f);
-            }
-            else if (theRB.linearVelocity.x > 0f)
-            {
-                transform.localScale = new Vector3(1f, 1f, 1f);
+                if (theRB.linearVelocity.x < 0f)
+                {
+                    transform.localScale = new Vector3(-1f, 1f, 1f);
+                }
+                else if (theRB.linearVelocity.x > 0f)
+                {
+                    transform.localScale = new Vector3(1f, 1f, 1f);
+                }
             }
         }
 
-
-        bool hasSwitchedTool = false;
-
-        if (Keyboard.current.tabKey.wasPressedThisFrame)
+        if (!fishingRodController.isCast)
         {
-            currentTool++;
+            bool hasSwitchedTool = false;
 
-            if ((int) currentTool >= 5)
+            if (Keyboard.current.tabKey.wasPressedThisFrame)
+            {
+                currentTool++;
+
+                if ((int)currentTool >= 5)
+                {
+                    currentTool = ToolType.plough;
+                }
+                hasSwitchedTool = true;
+            }
+
+            if (Keyboard.current.digit1Key.wasPressedThisFrame)
             {
                 currentTool = ToolType.plough;
+                hasSwitchedTool = true;
             }
-            hasSwitchedTool = true;
-        }
-
-        if (Keyboard.current.digit1Key.wasPressedThisFrame)
-        {
-            currentTool = ToolType.plough;
-            hasSwitchedTool = true;
-        }
-        if (Keyboard.current.digit2Key.wasPressedThisFrame)
-        {
-            currentTool = ToolType.wateringCan;
-            hasSwitchedTool = true;
-        }
-        if (Keyboard.current.digit3Key.wasPressedThisFrame)
-        {
-            currentTool = ToolType.seeds;
-            hasSwitchedTool = true;
-        }
-        if (Keyboard.current.digit4Key.wasPressedThisFrame)
-        {
-            currentTool = ToolType.basket;
-            hasSwitchedTool = true;
-        }
-        if (Keyboard.current.digit5Key.wasPressedThisFrame)
-        {
-            currentTool = ToolType.fishingRod;
-            hasSwitchedTool = true;
+            if (Keyboard.current.digit2Key.wasPressedThisFrame)
+            {
+                currentTool = ToolType.wateringCan;
+                hasSwitchedTool = true;
+            }
+            if (Keyboard.current.digit3Key.wasPressedThisFrame)
+            {
+                currentTool = ToolType.seeds;
+                hasSwitchedTool = true;
+            }
+            if (Keyboard.current.digit4Key.wasPressedThisFrame)
+            {
+                currentTool = ToolType.basket;
+                hasSwitchedTool = true;
+            }
+            if (Keyboard.current.digit5Key.wasPressedThisFrame)
+            {
+                currentTool = ToolType.fishingRod;
+                hasSwitchedTool = true;
+            }
+            if (hasSwitchedTool == true)
+            {
+                UIController.instance.SwitchTool((int) currentTool);
+            }
         }
 
         if (currentTool != ToolType.fishingRod && fishingRod.activeSelf == true) fishingRod.SetActive(false);
         if (currentTool == ToolType.fishingRod && fishingRod.activeSelf == false) fishingRod.SetActive(true);
 
-        if (hasSwitchedTool == true)
-        {
-            // FindFirstObjectByType<UIController>().SwitchTool((int) currentTool);
 
-            UIController.instance.SwitchTool((int) currentTool);
+        // PREVENTING MOVING WHILE FISHING
+        if (fishingRodController.isCast)
+        {
+            theRB.linearVelocity = Vector2.zero;
         }
 
         float speed = theRB.linearVelocity.magnitude;
@@ -206,6 +219,24 @@ public class PlayerController : MonoBehaviour
         {
             toolIndicator.position = new Vector3(0, 0, -20f);
         }
+
+        // USING FISHING ROD
+        if (currentTool == ToolType.fishingRod && Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            if (!fishingRodController.isCast)
+            {
+                Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
+                Vector3 mousePos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+                mousePos.z = 0f;
+
+                fishingRodController.Cast(mousePos);
+            }
+            else
+            {
+                fishingRodController.Retract();
+            }
+        }
+
     }
 
     void UseTool()
