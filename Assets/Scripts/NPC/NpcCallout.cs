@@ -45,7 +45,7 @@ public class NpcCallout : MonoBehaviour
             displayTimer += Time.deltaTime;
             if (displayTimer >= displayDuration)
             {
-                calloutObjects[currentIndex].SetActive(false);
+                calloutObjects[currentIndex]!.SetActive(false);
                 currentIndex = -1;
                 nextTime = Random.Range(minInterval, maxInterval);
             }

@@ -63,6 +63,19 @@ public class FishController : MonoBehaviour
             }
         }
     }
+
+    public void SellAllFishes()
+    {
+        foreach (FishInfo info in fishList)
+        {
+            if (info.amount > 0)
+            {
+                CurrencyController.instance.AddMoney(info.amount * info.price);
+                info.amount = 0;
+                AudioManager.instance.PlaySFXPitchAdjusted(6);
+            }
+        }
+    }
 }
 
 [System.Serializable]
