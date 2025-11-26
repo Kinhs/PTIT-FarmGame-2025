@@ -61,6 +61,8 @@ public class FishingRodController : MonoBehaviour
             caughtFishSprite.position = hookTip.position;
             caughtFishSprite.localScale = new Vector3(selectedFish.size, selectedFish.size, 1f);
             caughtFishRenderer.sprite = selectedFish.sprite;
+
+            FishController.instance.AddFish(selectedFish.fishType);
         }
 
         ResetBite();

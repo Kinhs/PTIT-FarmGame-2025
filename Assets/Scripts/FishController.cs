@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static CropController;
 
 public class FishController : MonoBehaviour
 {
@@ -29,6 +30,39 @@ public class FishController : MonoBehaviour
     }
 
     public List<FishInfo> fishList = new List<FishInfo>();
+
+    public FishInfo GetFishInfo(FishType fishType)
+    {
+        int position = -1;
+
+        for (int i = 0; i < fishList.Count; i++)
+        {
+            if (fishList[i].fishType == fishType)
+            {
+                position = i;
+            }
+        }
+
+        if (position >= 0)
+        {
+            return fishList[position];
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public void AddFish(FishType fishToAdd)
+    {
+        foreach (FishInfo info in fishList)
+        {
+            if (info.fishType == fishToAdd)
+            {
+                info.amount++;
+            }
+        }
+    }
 }
 
 [System.Serializable]
