@@ -50,6 +50,9 @@ public class PlayerController : MonoBehaviour
     public GameObject fishingRod;
 
     public FishingRodController fishingRodController;
+    public LayerMask fishingLayer;
+    public LayerMask fishingBlockerLayer;
+
 
     private bool isWalkingSFXPlayed;
 
@@ -229,13 +232,20 @@ public class PlayerController : MonoBehaviour
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
                 mousePos.z = 0f;
 
-                fishingRodController.Cast(mousePos);
+                bool hitFishing = Physics2D.OverlapPoint(mousePos, fishingLayer);
+                bool hitBlocker = Physics2D.OverlapPoint(mousePos, fishingBlockerLayer);
+
+                if (hitFishing && !hitBlocker)
+                {
+                    fishingRodController.Cast(mousePos);
+                }
             }
             else
             {
                 fishingRodController.Retract();
             }
         }
+
 
     }
 

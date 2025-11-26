@@ -8389,7 +8389,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 874208157
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 3245126499545192239, guid: c508eca98460ced40892c2f8de5b5621, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -10413,7 +10413,7 @@ Transform:
   m_GameObject: {fileID: 150413833}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0567, y: -0.0028, z: 0}
+  m_LocalPosition: {x: 0.0591, y: 0.0266, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42818,6 +42818,86 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381882749}
   m_CullTransparentMesh: 1
+--- !u!1 &383215246
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 383215248}
+  - component: {fileID: 383215247}
+  m_Layer: 0
+  m_Name: Fish Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &383215247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383215246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792848db994f728448e504ee2314112b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FishController
+  fishList:
+  - fishType: 0
+    sprite: {fileID: 6078352492428153882, guid: fdf7fac007c656d45aff2b18f870a0c5, type: 3}
+    amount: 0
+    price: 1
+    size: 0.5
+    catchTime: 0
+    commonPoint: 100
+  - fishType: 1
+    sprite: {fileID: -575027357971916658, guid: fdf7fac007c656d45aff2b18f870a0c5, type: 3}
+    amount: 0
+    price: 3
+    size: 0.7
+    catchTime: 0
+    commonPoint: 50
+  - fishType: 2
+    sprite: {fileID: 3646522454361906472, guid: fdf7fac007c656d45aff2b18f870a0c5, type: 3}
+    amount: 0
+    price: 6
+    size: 1
+    catchTime: 0
+    commonPoint: 25
+  - fishType: 3
+    sprite: {fileID: 7134718345356409942, guid: fdf7fac007c656d45aff2b18f870a0c5, type: 3}
+    amount: 0
+    price: 12
+    size: 1.4
+    catchTime: 0
+    commonPoint: 12.5
+  - fishType: 4
+    sprite: {fileID: 8589306949512994324, guid: fdf7fac007c656d45aff2b18f870a0c5, type: 3}
+    amount: 0
+    price: 0
+    size: 20
+    catchTime: 0
+    commonPoint: 5
+--- !u!4 &383215248
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383215246}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &384666887
 GameObject:
   m_ObjectHideFlags: 0
@@ -52814,6 +52894,12 @@ MonoBehaviour:
   seedCropType: 2
   fishingRod: {fileID: 2069111985}
   fishingRodController: {fileID: 2069111989}
+  fishingLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  fishingBlockerLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!70 &1047367169
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -54637,6 +54723,96 @@ MonoBehaviour:
   cropImage: {fileID: 523217477}
   amountText: {fileID: 916186818}
   priceText: {fileID: 1208410910}
+--- !u!1 &1146346064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1146346065}
+  - component: {fileID: 1146346066}
+  m_Layer: 0
+  m_Name: Caught Fish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1146346065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146346064}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1991914769}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1146346066
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146346064}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1146494494
 GameObject:
   m_ObjectHideFlags: 0
@@ -66370,7 +66546,7 @@ Transform:
   m_GameObject: {fileID: 1991914768}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0482, y: -0.0385, z: 0}
+  m_LocalPosition: {x: 0.0663, y: 0.0235, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -66380,6 +66556,7 @@ Transform:
   - {fileID: 1300585115}
   - {fileID: 1156973835}
   - {fileID: 20066175}
+  - {fileID: 1146346065}
   m_Father: {fileID: 2069111986}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1991914770
@@ -66827,6 +67004,13 @@ MonoBehaviour:
   hookTip: {fileID: 1991914769}
   castTime: 0.5
   retractTime: 0.5
+  biteTimeMin: 3
+  biteTimeMax: 5
+  biteDuration: 2
+  biteCircle: {fileID: 20066175}
+  caughtFishSprite: {fileID: 1364665962}
+  biteCircleStartAlpha: 0.1
+  biteCircleStartScale: {x: 4, y: 4, z: 1}
 --- !u!1 &2076661208
 GameObject:
   m_ObjectHideFlags: 0
@@ -68563,6 +68747,7 @@ SceneRoots:
   - {fileID: 2016075370}
   - {fileID: 901394423}
   - {fileID: 324977363}
+  - {fileID: 383215248}
   - {fileID: 588789192}
   - {fileID: 68332592}
   - {fileID: 1351311659}
