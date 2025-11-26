@@ -12,8 +12,6 @@ public class FishingRodController : MonoBehaviour
     public float biteTimeMin = 2f;
     public float biteTimeMax = 5f;
 
-    public float biteDuration = 2f;
-
     public Transform biteCircle;
     public Transform caughtFishSprite;
 
@@ -28,11 +26,17 @@ public class FishingRodController : MonoBehaviour
     Coroutine biteRoutine;
 
     SpriteRenderer biteCircleRenderer;
+    SpriteRenderer caughtFishRenderer;
+
+    FishInfo selectedFish;
 
     void Awake()
     {
         if (biteCircle != null)
             biteCircleRenderer = biteCircle.GetComponent<SpriteRenderer>();
+
+        if (caughtFishSprite != null)
+            caughtFishRenderer = caughtFishSprite.GetComponent<SpriteRenderer>();
     }
 
     public void Cast(Vector3 target)
@@ -40,6 +44,7 @@ public class FishingRodController : MonoBehaviour
         isCast = true;
         castTarget = target;
         ResetBite();
+
         if (moveRoutine != null) StopCoroutine(moveRoutine);
         moveRoutine = StartCoroutine(MoveHook(rodRoot.position, target, castTime, true));
     }
@@ -48,10 +53,12 @@ public class FishingRodController : MonoBehaviour
     {
         if (!isCast) return;
 
-        if (canCatch)
+        if (canCatch && selectedFish != null)
         {
             caughtFishSprite.gameObject.SetActive(true);
             caughtFishSprite.position = hookTip.position;
+            caughtFishSprite.localScale = new Vector3(selectedFish.size, selectedFish.size, 1f);
+            caughtFishRenderer.sprite = selectedFish.sprite;
         }
 
         ResetBite();
@@ -77,6 +84,7 @@ public class FishingRodController : MonoBehaviour
         if (isCastingAction)
         {
             isCast = true;
+            selectedFish = GetRandomFish();
             biteRoutine = StartCoroutine(BiteProcess());
         }
         else
@@ -91,8 +99,17 @@ public class FishingRodController : MonoBehaviour
         float waitTime = Random.Range(biteTimeMin, biteTimeMax);
         yield return new WaitForSeconds(waitTime);
 
+        if (selectedFish == null)
+        {
+            canCatch = false;
+            yield break;
+        }
+
+        float duration = selectedFish.catchTime;
+
         biteCircle.gameObject.SetActive(true);
         biteCircle.localScale = biteCircleStartScale;
+
         if (biteCircleRenderer != null)
         {
             Color c = biteCircleRenderer.color;
@@ -103,20 +120,21 @@ public class FishingRodController : MonoBehaviour
         float t = 0f;
         canCatch = false;
 
-        while (t < biteDuration)
+        while (t < duration)
         {
             t += Time.deltaTime;
-            float k = Mathf.Clamp01(t / biteDuration);
+            float k = Mathf.Clamp01(t / duration);
+
             biteCircle.localScale = Vector3.Lerp(biteCircleStartScale, Vector3.zero, k);
 
             if (biteCircleRenderer != null)
             {
                 Color c = biteCircleRenderer.color;
-                c.a = Mathf.Lerp(biteCircleStartAlpha, 1.5f, k);
+                c.a = Mathf.Lerp(biteCircleStartAlpha, 1.0f, k);
                 biteCircleRenderer.color = c;
             }
 
-            if (t >= biteDuration * 0.8f)
+            if (t >= duration * 0.8f)
                 canCatch = true;
 
             yield return null;
@@ -129,10 +147,33 @@ public class FishingRodController : MonoBehaviour
     void ResetBite()
     {
         canCatch = false;
+        selectedFish = null;
 
         if (biteRoutine != null)
             StopCoroutine(biteRoutine);
 
         biteCircle.gameObject.SetActive(false);
+    }
+
+    FishInfo GetRandomFish()
+    {
+        var list = FishController.instance.fishList;
+        if (list.Count == 0) return null;
+
+        float total = 0f;
+        for (int i = 0; i < list.Count; i++)
+            total += list[i].commonPoint;
+
+        float rnd = Random.Range(0f, total);
+        float sum = 0f;
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            sum += list[i].commonPoint;
+            if (rnd <= sum)
+                return list[i];
+        }
+
+        return list[list.Count - 1];
     }
 }
