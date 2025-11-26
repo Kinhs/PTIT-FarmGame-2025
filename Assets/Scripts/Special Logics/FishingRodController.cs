@@ -21,6 +21,8 @@ public class FishingRodController : MonoBehaviour
     public bool isCast { get; private set; }
     public bool canCatch { get; private set; }
 
+    [HideInInspector] public bool isInBonusZone;
+
     Vector3 castTarget;
     Coroutine moveRoutine;
     Coroutine biteRoutine;
@@ -97,6 +99,11 @@ public class FishingRodController : MonoBehaviour
     IEnumerator BiteProcess()
     {
         float waitTime = Random.Range(biteTimeMin, biteTimeMax);
+        if (isInBonusZone)
+        {
+            waitTime /= 2;
+        }
+
         yield return new WaitForSeconds(waitTime);
 
         if (selectedFish == null)

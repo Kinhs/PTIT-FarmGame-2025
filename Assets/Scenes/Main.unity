@@ -52810,6 +52810,9 @@ MonoBehaviour:
   fishingBlockerLayer:
     serializedVersion: 2
     m_Bits: 512
+  fishingBonusLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!70 &1047367169
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -66555,6 +66558,7 @@ MonoBehaviour:
   caughtFishSprite: {fileID: 1146346065}
   biteCircleStartAlpha: 0.1
   biteCircleStartScale: {x: 4, y: 4, z: 1}
+  isInBonusZone: 0
 --- !u!1 &2076661208
 GameObject:
   m_ObjectHideFlags: 0

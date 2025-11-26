@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
     public FishingRodController fishingRodController;
     public LayerMask fishingLayer;
     public LayerMask fishingBlockerLayer;
+    public LayerMask fishingBonusLayer;
 
 
     private bool isWalkingSFXPlayed;
@@ -234,6 +235,16 @@ public class PlayerController : MonoBehaviour
 
                 bool hitFishing = Physics2D.OverlapPoint(mousePos, fishingLayer);
                 bool hitBlocker = Physics2D.OverlapPoint(mousePos, fishingBlockerLayer);
+                bool hitBonus = Physics2D.OverlapPoint(mousePos, fishingBonusLayer);
+
+                if (hitBonus)
+                {
+                    fishingRodController.isInBonusZone = true;
+                }
+                else
+                {
+                    fishingRodController.isInBonusZone = false;
+                }
 
                 if (hitFishing && !hitBlocker)
                 {
