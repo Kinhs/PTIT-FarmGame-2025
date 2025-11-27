@@ -49,6 +49,8 @@ public class FishingRodController : MonoBehaviour
 
         if (moveRoutine != null) StopCoroutine(moveRoutine);
         moveRoutine = StartCoroutine(MoveHook(rodRoot.position, target, castTime, true));
+
+        AudioManager.instance.PlaySFX(9);
     }
 
     public void Retract()
@@ -69,6 +71,8 @@ public class FishingRodController : MonoBehaviour
 
         if (moveRoutine != null) StopCoroutine(moveRoutine);
         moveRoutine = StartCoroutine(MoveHook(hookTip.position, rodRoot.position, retractTime, false));
+
+        AudioManager.instance.PlaySFX(10);
     }
 
     IEnumerator MoveHook(Vector3 start, Vector3 end, float time, bool isCastingAction)
@@ -118,6 +122,7 @@ public class FishingRodController : MonoBehaviour
 
         biteCircle.gameObject.SetActive(true);
         biteCircle.localScale = biteCircleStartScale;
+        AudioManager.instance.PlaySFX(8);
 
         if (biteCircleRenderer != null)
         {
