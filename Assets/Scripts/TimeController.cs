@@ -50,6 +50,9 @@ public class TimeController : MonoBehaviour
     public float middayStart = 12f;
     public float middayEnd = 14f;
 
+    [HideInInspector] public bool isDayEnded => currentTime >= dayEnd;
+    [HideInInspector] public bool shouldEnableLight => currentTime >= 18f;
+
     void Start()
     {
         currentTime = dayStart;

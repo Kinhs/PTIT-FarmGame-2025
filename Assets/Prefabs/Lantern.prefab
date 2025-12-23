@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4836669469529462728}
   - component: {fileID: 5544713066200668381}
+  - component: {fileID: -6158228225317414386}
   m_Layer: 7
   m_Name: Lantern
   m_TagString: Untagged
@@ -80,6 +81,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.04, y: 1.45}
   m_EdgeRadius: 0
+--- !u!114 &-6158228225317414386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597702326952380364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb5a9a4368b62e144a30439a7237645a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LanternController
+  lightSource: {fileID: 8824408726825296985}
 --- !u!1 &3249252928160776623
 GameObject:
   m_ObjectHideFlags: 0
