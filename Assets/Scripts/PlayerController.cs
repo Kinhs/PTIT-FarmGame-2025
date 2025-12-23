@@ -54,6 +54,10 @@ public class PlayerController : MonoBehaviour
     public LayerMask fishingBlockerLayer;
     public LayerMask fishingBonusLayer;
 
+    public float tiredEmoteShowTime = 1.0f;
+    public GameObject tiredCallout;
+    private float tiredEmoteShowTimer;
+
 
     private bool isWalkingSFXPlayed;
 
@@ -71,6 +75,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (tiredEmoteShowTimer > 0)
+        {
+            tiredEmoteShowTimer -= Time.deltaTime;
+            if (tiredEmoteShowTimer <= 0)
+            {
+                tiredCallout.SetActive(false);
+            }
+        }
+
         if(UIController.instance != null)
         {
             if(UIController.instance.theIC != null)
@@ -227,41 +240,58 @@ public class PlayerController : MonoBehaviour
         // USING FISHING ROD
         if (currentTool == ToolType.fishingRod && Mouse.current.leftButton.wasPressedThisFrame)
         {
-            if (!fishingRodController.isCast)
-            {
-                Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
-                Vector3 mousePos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
-                mousePos.z = 0f;
-
-                bool hitFishing = Physics2D.OverlapPoint(mousePos, fishingLayer);
-                bool hitBlocker = Physics2D.OverlapPoint(mousePos, fishingBlockerLayer);
-                bool hitBonus = Physics2D.OverlapPoint(mousePos, fishingBonusLayer);
-
-                if (hitBonus)
-                {
-                    fishingRodController.isInBonusZone = true;
-                }
-                else
-                {
-                    fishingRodController.isInBonusZone = false;
-                }
-
-                if (hitFishing && !hitBlocker)
-                {
-                    fishingRodController.Cast(mousePos);
-                }
-            }
-            else
-            {
-                fishingRodController.Retract();
-            }
+            UseFishingRod();
         }
 
 
     }
 
+    void UseFishingRod()
+    {
+        if (!fishingRodController.isCast)
+        {
+            if (TimeController.instance.isDayEnded)
+            {
+                ShowTiredEmote();
+                return;
+            }
+
+            Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+            mousePos.z = 0f;
+
+            bool hitFishing = Physics2D.OverlapPoint(mousePos, fishingLayer);
+            bool hitBlocker = Physics2D.OverlapPoint(mousePos, fishingBlockerLayer);
+            bool hitBonus = Physics2D.OverlapPoint(mousePos, fishingBonusLayer);
+
+            if (hitBonus)
+            {
+                fishingRodController.isInBonusZone = true;
+            }
+            else
+            {
+                fishingRodController.isInBonusZone = false;
+            }
+
+            if (hitFishing && !hitBlocker)
+            {
+                fishingRodController.Cast(mousePos);
+            }
+        }
+        else
+        {
+            fishingRodController.Retract();
+        }
+    }
+
     void UseTool()
     {
+        if (TimeController.instance.isDayEnded)
+        {
+            ShowTiredEmote();
+            return;
+        }
+
         GrowBlock block = null;
 
         //block = FindFirstObjectByType<GrowBlock>();
@@ -301,6 +331,12 @@ public class PlayerController : MonoBehaviour
                     break;
             }
         }
+    }
+
+    void ShowTiredEmote()
+    {
+        tiredEmoteShowTimer = tiredEmoteShowTime;
+        tiredCallout.SetActive(true);
     }
 
 
