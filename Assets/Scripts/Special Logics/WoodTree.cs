@@ -13,11 +13,15 @@ public class WoodTree : MonoBehaviour
     [SerializeField] private GameObject choppedSprite;
 
     private int currentHits;
+    private int woodReward;
     private Vector3 originalPosition;
     private bool isChopped;
 
     private void Awake()
     {
+        maxHits = Random.Range(2, 7);
+        woodReward = maxHits / 2;
+
         currentHits = maxHits;
         originalPosition = transform.localPosition;
 
@@ -62,6 +66,8 @@ public class WoodTree : MonoBehaviour
             choppedSprite.SetActive(true);
 
             MaterialInfo.instance.SetTreeChopped(treeId, true);
+            MaterialController.instance.woodAmount += woodReward;
+            WoodPickupSpawner.instance.SpawnWood(transform.position, woodReward);
         }
     }
 

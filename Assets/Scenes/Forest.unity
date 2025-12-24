@@ -269,6 +269,54 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02b540f8798494b41a351cc90676536a, type: 3}
+--- !u!1 &134458375
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 134458377}
+  - component: {fileID: 134458376}
+  m_Layer: 0
+  m_Name: Wood Pickup Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &134458376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134458375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c7eb44dc8c23c4eab40b95fd938eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WoodPickupSpawner
+  woodPrefab: {fileID: 3389785591032499599, guid: 1d9e29bcfa4dd324782728945dca50fa, type: 3}
+  poolSize: 10
+  spawnRadius: 1
+  flyDuration: 0.3
+--- !u!4 &134458377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134458375}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &143501734
 GameObject:
   m_ObjectHideFlags: 0
@@ -27267,3 +27315,4 @@ SceneRoots:
   - {fileID: 1780887408}
   - {fileID: 814721175}
   - {fileID: 256084459}
+  - {fileID: 134458377}
