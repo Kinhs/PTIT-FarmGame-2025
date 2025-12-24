@@ -15,8 +15,18 @@ public class NpcCallout : MonoBehaviour
 
     void Start()
     {
+        if (calloutObjects == null || calloutObjects.Length == 0)
+        {
+            Debug.LogError("NpcCallout: calloutObjects is not assigned");
+            enabled = false;
+            return;
+        }
+
         for (int i = 0; i < calloutObjects.Length; i++)
-            calloutObjects[i].SetActive(false);
+        {
+            if (calloutObjects[i] != null)
+                calloutObjects[i].SetActive(false);
+        }
 
         nextTime = Random.Range(minInterval, maxInterval);
     }
@@ -29,8 +39,18 @@ public class NpcCallout : MonoBehaviour
             if (timer >= nextTime)
             {
                 int index;
-                do { index = Random.Range(0, calloutObjects.Length); }
+                do
+                {
+                    index = Random.Range(0, calloutObjects.Length);
+                }
                 while (index == lastIndex && calloutObjects.Length > 1);
+
+                if (calloutObjects[index] == null)
+                {
+                    timer = 0f;
+                    nextTime = Random.Range(minInterval, maxInterval);
+                    return;
+                }
 
                 lastIndex = index;
                 currentIndex = index;
@@ -45,7 +65,9 @@ public class NpcCallout : MonoBehaviour
             displayTimer += Time.deltaTime;
             if (displayTimer >= displayDuration)
             {
-                calloutObjects[currentIndex]!.SetActive(false);
+                if (calloutObjects[currentIndex] != null)
+                    calloutObjects[currentIndex].SetActive(false);
+
                 currentIndex = -1;
                 nextTime = Random.Range(minInterval, maxInterval);
             }
