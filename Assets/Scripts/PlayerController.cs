@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.Rendering.DebugUI.Table;
+using static UnityEngine.Rendering.ReloadAttribute;
 
 public class PlayerController : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
         basket,
         fishingRod,
         axe,
+        pickaxe,
         count
     }
 
@@ -51,6 +53,9 @@ public class PlayerController : MonoBehaviour
 
     public GameObject axe;
     public AxeController axeController;
+
+    public GameObject pickaxe;
+    public PickaxeController pickaxeController;
 
     public GameObject fishingRod;
     public FishingRodController fishingRodController;
@@ -188,6 +193,11 @@ public class PlayerController : MonoBehaviour
                 currentTool = ToolType.axe;
                 hasSwitchedTool = true;
             }
+            if (Keyboard.current.digit7Key.wasPressedThisFrame)
+            {
+                currentTool = ToolType.pickaxe;
+                hasSwitchedTool = true;
+            }
             if (hasSwitchedTool == true)
             {
                 UIController.instance.SwitchTool((int) currentTool);
@@ -199,6 +209,9 @@ public class PlayerController : MonoBehaviour
 
         if (currentTool != ToolType.axe && axe.activeSelf == true) axe.SetActive(false);
         if (currentTool == ToolType.axe && axe.activeSelf == false) axe.SetActive(true);
+
+        if (currentTool != ToolType.pickaxe && pickaxe.activeSelf == true) pickaxe.SetActive(false);
+        if (currentTool == ToolType.pickaxe && pickaxe.activeSelf == false) pickaxe.SetActive(true);
 
 
         // PREVENTING MOVING WHILE FISHING
@@ -263,6 +276,22 @@ public class PlayerController : MonoBehaviour
             UseAxe();
         }
 
+        // USING PICKAXE
+        if (currentTool == ToolType.pickaxe && Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            UsePickaxe();
+        }
+
+    }
+
+    void UsePickaxe()
+    {
+        if (isExhausted)
+        {
+            ShowTiredEmote();
+            return;
+        }
+        pickaxeController.Use();
     }
 
     void UseAxe()

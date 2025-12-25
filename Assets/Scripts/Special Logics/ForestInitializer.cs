@@ -13,30 +13,23 @@ public class ForestInitializer : MonoBehaviour
 
         foreach (var tree in trees)
         {
-            string id = GetTreeId(tree);
+            var field = typeof(WoodTree).GetField(
+                "treeId",
+                System.Reflection.BindingFlags.NonPublic |
+                System.Reflection.BindingFlags.Instance
+            );
+
+            string id = field.GetValue(tree) as string;
             if (!string.IsNullOrEmpty(id))
                 treeIds.Add(id);
         }
 
-        MaterialInfo.instance.InitializeForestForDay(
+        MaterialInfo.instance.InitializeTreesForDay(
             TimeController.instance.currentDay,
             treeIds
         );
 
         foreach (var tree in trees)
-        {
             tree.ApplyStateFromMaterialInfo();
-        }
-    }
-
-    private string GetTreeId(WoodTree tree)
-    {
-        var field = typeof(WoodTree).GetField(
-            "treeId",
-            System.Reflection.BindingFlags.NonPublic |
-            System.Reflection.BindingFlags.Instance
-        );
-
-        return field.GetValue(tree) as string;
     }
 }

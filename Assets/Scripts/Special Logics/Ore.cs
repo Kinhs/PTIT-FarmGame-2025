@@ -1,77 +1,76 @@
 using UnityEngine;
 using System.Collections;
 
-public class WoodTree : MonoBehaviour
+public class Ore : MonoBehaviour
 {
-    [SerializeField] private string treeId;
+    [SerializeField] private OreType type;
+    [SerializeField] private string oreId;
 
     [SerializeField] private int maxHits = 3;
     [SerializeField] private float shakeDuration = 0.12f;
     [SerializeField] private float shakeStrength = 0.08f;
 
-    [SerializeField] private GameObject intactSprite;
-    [SerializeField] private GameObject choppedSprite;
+    [SerializeField] private GameObject oreSprite;
 
     private int currentHits;
-    private int woodReward;
+    private int rewardAmount;
     private Vector3 originalPosition;
-    private bool isChopped;
+    private bool isDepleted;
 
     private void Awake()
     {
         maxHits = Random.Range(2, 7);
-        woodReward = maxHits / 2;
+        rewardAmount = maxHits / 2;
 
         currentHits = maxHits;
         originalPosition = transform.localPosition;
 
-        MaterialInfo.instance.RegisterTree(treeId);
-
+        MaterialInfo.instance.RegisterOre(oreId);
         ApplyStateFromMaterialInfo();
     }
 
     public void ApplyStateFromMaterialInfo()
     {
-        bool chopped = MaterialInfo.instance.IsTreeChopped(treeId);
+        bool depleted = MaterialInfo.instance.IsOreDepleted(oreId);
 
-        if (chopped)
+        if (depleted)
         {
-            isChopped = true;
+            isDepleted = true;
             currentHits = 0;
-            intactSprite.SetActive(false);
-            choppedSprite.SetActive(true);
+            oreSprite.SetActive(false);
         }
         else
         {
-            isChopped = false;
+            isDepleted = false;
             currentHits = maxHits;
-            intactSprite.SetActive(true);
-            choppedSprite.SetActive(false);
+            oreSprite.SetActive(true);
         }
     }
 
     public void TakeHit()
     {
-        if (isChopped)
+        if (isDepleted)
             return;
 
         currentHits--;
-
         StartCoroutine(Shake());
 
         if (currentHits <= 0)
         {
-            isChopped = true;
-            intactSprite.SetActive(false);
-            choppedSprite.SetActive(true);
+            isDepleted = true;
+            oreSprite.SetActive(false);
 
-            MaterialInfo.instance.SetTreeChopped(treeId, true);
+            MaterialInfo.instance.SetOreDepleted(oreId, true);
+
+            ItemType itemType = type == OreType.stone
+                ? ItemType.Stone
+                : ItemType.Gold;
+
             ItemPickupSpawner.instance.Spawn(
-            ItemType.Wood,
+                itemType,
                 transform.position,
-                woodReward
+                rewardAmount
             );
-
         }
     }
 
@@ -89,4 +88,10 @@ public class WoodTree : MonoBehaviour
 
         transform.localPosition = originalPosition;
     }
+}
+
+public enum OreType
+{
+    stone,
+    gold
 }

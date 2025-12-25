@@ -8,9 +8,14 @@ public class MaterialInfo : MonoBehaviour
     [Range(0f, 1f)]
     public float choppedChance = 0.3f;
 
+    [Range(0f, 1f)]
+    public float oreDepletedChance = 0.25f;
+
     private Dictionary<string, bool> treeStates = new Dictionary<string, bool>();
-    private int lastInitializedDay = -1;
-    private bool forestInitialized = false;
+    private Dictionary<string, bool> oreStates = new Dictionary<string, bool>();
+
+    private int lastTreeInitDay = -1;
+    private int lastOreInitDay = -1;
 
     private void Awake()
     {
@@ -23,6 +28,14 @@ public class MaterialInfo : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    /* ================= TREE ================= */
+
+    public void RegisterTree(string treeId)
+    {
+        if (!treeStates.ContainsKey(treeId))
+            treeStates.Add(treeId, false);
     }
 
     public bool IsTreeChopped(string treeId)
@@ -38,24 +51,52 @@ public class MaterialInfo : MonoBehaviour
         treeStates[treeId] = chopped;
     }
 
-    public void RegisterTree(string treeId)
+    public void InitializeTreesForDay(int currentDay, IEnumerable<string> treeIds)
     {
-        if (!treeStates.ContainsKey(treeId))
-            treeStates.Add(treeId, false);
-    }
-
-    public void InitializeForestForDay(int currentDay, IEnumerable<string> treeIds)
-    {
-        if (forestInitialized && currentDay == lastInitializedDay)
+        if (treeIds == null)
             return;
 
-        forestInitialized = true;
-        lastInitializedDay = currentDay;
+        if (currentDay == lastTreeInitDay)
+            return;
+
+        lastTreeInitDay = currentDay;
 
         foreach (var id in treeIds)
-        {
-            bool chopped = Random.value < choppedChance;
-            treeStates[id] = chopped;
-        }
+            treeStates[id] = Random.value < choppedChance;
+    }
+
+    /* ================= ORE ================= */
+
+    public void RegisterOre(string oreId)
+    {
+        if (!oreStates.ContainsKey(oreId))
+            oreStates.Add(oreId, false);
+    }
+
+    public bool IsOreDepleted(string oreId)
+    {
+        if (!oreStates.ContainsKey(oreId))
+            oreStates[oreId] = false;
+
+        return oreStates[oreId];
+    }
+
+    public void SetOreDepleted(string oreId, bool depleted)
+    {
+        oreStates[oreId] = depleted;
+    }
+
+    public void InitializeOresForDay(int currentDay, IEnumerable<string> oreIds)
+    {
+        if (oreIds == null)
+            return;
+
+        if (currentDay == lastOreInitDay)
+            return;
+
+        lastOreInitDay = currentDay;
+
+        foreach (var id in oreIds)
+            oreStates[id] = Random.value < oreDepletedChance;
     }
 }
