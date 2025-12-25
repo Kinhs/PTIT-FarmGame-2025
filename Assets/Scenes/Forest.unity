@@ -398,7 +398,7 @@ MonoBehaviour:
   - type: 0
     prefab: {fileID: 6473713667208408822, guid: 1d9e29bcfa4dd324782728945dca50fa, type: 3}
   spawnRadius: 0.4
-  flyDuration: 0.5
+  flyDuration: 0.3
 --- !u!1 &143501734
 GameObject:
   m_ObjectHideFlags: 0

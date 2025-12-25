@@ -54937,7 +54937,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MaterialInfo
   choppedChance: 0.5
-  oreDepletedChance: 0.25
+  oreDepletedChance: 0.5
+  caveBlockerChance: 0.5
 --- !u!4 &1100311249
 Transform:
   m_ObjectHideFlags: 0

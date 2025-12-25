@@ -51,7 +51,7 @@ MonoBehaviour:
   oreId: 100
   maxHits: 3
   shakeDuration: 0.12
-  shakeStrength: 0.08
+  shakeStrength: 0.12
   oreSprite: {fileID: 2735059261351533870}
 --- !u!50 &2422635381357375745
 Rigidbody2D:
