@@ -402,4 +402,9 @@ public class PlayerController : MonoBehaviour
     {
         seedCropType = newSeed;
     }
+
+    public void TakeHit()
+    {
+        Debug.Log("Player get hit");
+    }
 }
