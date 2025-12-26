@@ -3,6 +3,33 @@ using UnityEngine.InputSystem;
 using static UnityEngine.Rendering.DebugUI.Table;
 using static UnityEngine.Rendering.ReloadAttribute;
 
+
+[System.Serializable]
+public class Stat
+{
+    public int maxValue;
+    public int currentValue;
+
+    public Stat(int maxValue, int currentValue)
+    {
+        this.maxValue = maxValue;
+        this.currentValue = currentValue;
+    }
+
+    public void Subtract(int amount)
+    {
+        currentValue -= amount;
+        if (currentValue < 0)
+        {
+            currentValue = 0;
+        }
+    }
+
+    public void SetToMax()
+    {
+        currentValue = maxValue;
+    }
+}
 public class PlayerController : MonoBehaviour
 {
 
@@ -70,7 +97,10 @@ public class PlayerController : MonoBehaviour
 
     private bool isWalkingSFXPlayed;
 
-    private bool isExhausted => TimeController.instance.isDayEnded;
+    private bool isExhausted;
+
+    public Stat stamina;
+    [SerializeField] StatusBar staminaBar;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -81,6 +111,9 @@ public class PlayerController : MonoBehaviour
         UIController.instance.SwitchTool((int)currentTool);
 
         UIController.instance.SwitchSeed(seedCropType);
+
+        stamina = new Stat(100, 100);
+        staminaBar.Set(stamina.currentValue, stamina.maxValue);
     }
 
     // Update is called once per frame
@@ -291,6 +324,7 @@ public class PlayerController : MonoBehaviour
             ShowTiredEmote();
             return;
         }
+        GetTired(5);
         pickaxeController.Use();
     }
 
@@ -301,6 +335,7 @@ public class PlayerController : MonoBehaviour
             ShowTiredEmote();
             return;
         }
+        GetTired(5);
         axeController.Use();
     }
 
@@ -313,6 +348,8 @@ public class PlayerController : MonoBehaviour
                 ShowTiredEmote();
                 return;
             }
+
+            GetTired(5);
 
             Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
@@ -402,4 +439,20 @@ public class PlayerController : MonoBehaviour
     {
         seedCropType = newSeed;
     }
+
+    public void GetTired(int amount)
+    {
+        stamina.Subtract(amount);
+        staminaBar.Set(stamina.currentValue, stamina.maxValue);
+        if (stamina.currentValue <= 0)
+        {
+            isExhausted = true;
+        }
+    }
+
+    public void FullRest()
+    {
+        stamina.SetToMax();
+        staminaBar.Set(stamina.currentValue, stamina.maxValue);
+    }    
 }

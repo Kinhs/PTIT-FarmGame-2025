@@ -95,6 +95,7 @@ public class GrowBlock : MonoBehaviour
     {
         if (currentStage == GrowthStage.barren && preventUse == false)
         {
+            PlayerController.instance.GetTired(5);
             currentStage = GrowthStage.ploughed;
             SetSoilSprite();
             AudioManager.instance.PlaySFXPitchAdjusted(2);
@@ -105,8 +106,11 @@ public class GrowBlock : MonoBehaviour
     {
         if (preventUse == false)
         {
-            isWatered = true;
-
+            if (isWatered == false)
+            {
+                PlayerController.instance.GetTired(5);
+                isWatered = true;
+            }
             SetSoilSprite();
             AudioManager.instance.PlaySFXPitchAdjusted(0);
         }
@@ -116,6 +120,8 @@ public class GrowBlock : MonoBehaviour
     {
         if (currentStage == GrowthStage.ploughed && isWatered == true && preventUse == false)
         {
+            PlayerController.instance.GetTired(5);
+
             currentStage = GrowthStage.planted;
 
             cropType = cropToPlant;
@@ -179,6 +185,8 @@ public class GrowBlock : MonoBehaviour
     {
         if (currentStage == GrowthStage.ripe && preventUse == false)
         {
+            PlayerController.instance.GetTired(5);
+
             currentStage = GrowthStage.ploughed;
 
             SetSoilSprite();

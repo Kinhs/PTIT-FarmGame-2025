@@ -116,6 +116,7 @@ public class TimeController : MonoBehaviour
 
     public void StartDay()
     {
+        PlayerController.instance.FullRest();
         timeActive = true;
         currentTime = dayStart;
         AudioManager.instance.PlaySFXPitchAdjusted(7);
