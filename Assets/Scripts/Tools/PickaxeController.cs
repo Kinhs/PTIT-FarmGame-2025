@@ -15,7 +15,6 @@ public class PickaxeController : MonoBehaviour
     [SerializeField] private float useCooldown = 0.4f;
 
     [Header("Hitbox")]
-    [SerializeField] private PickaxeHitbox chopHitbox;
     [SerializeField] private Collider2D chopCollider;
 
     private Quaternion initialRotation;
@@ -62,9 +61,6 @@ public class PickaxeController : MonoBehaviour
                 transform.localRotation = windUpRotation;
                 isWindUp = false;
                 isChopping = true;
-
-                if (chopHitbox != null)
-                    chopHitbox.ResetHit();
 
                 if (chopCollider != null)
                     chopCollider.enabled = true;

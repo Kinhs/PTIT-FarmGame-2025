@@ -15,7 +15,6 @@ public class AxeController : MonoBehaviour
     [SerializeField] private float useCooldown = 0.4f;
 
     [Header("Hitbox")]
-    [SerializeField] private AxeHitbox chopHitbox;
     [SerializeField] private Collider2D chopCollider;
 
     private Quaternion initialRotation;
@@ -62,9 +61,6 @@ public class AxeController : MonoBehaviour
                 transform.localRotation = windUpRotation;
                 isWindUp = false;
                 isChopping = true;
-
-                if (chopHitbox != null)
-                    chopHitbox.ResetHit();
 
                 if (chopCollider != null)
                     chopCollider.enabled = true;
