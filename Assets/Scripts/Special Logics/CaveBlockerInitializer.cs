@@ -9,6 +9,7 @@ public class CaveBlockerInitializer : MonoBehaviour
             return;
 
         var blockers = Object.FindObjectsByType<CaveBlocker>(
+            FindObjectsInactive.Include,
             FindObjectsSortMode.None
         );
 
