@@ -94,6 +94,9 @@ public class PlayerController : MonoBehaviour
     public GameObject tiredCallout;
     private float tiredEmoteShowTimer;
 
+    public float getHitEmoteShowTime = 0.5f;
+    public GameObject getHitCallout;
+    private float getHitEmoteShowTimer;
 
     private bool isWalkingSFXPlayed;
 
@@ -128,7 +131,16 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(UIController.instance != null)
+        if (getHitEmoteShowTimer > 0)
+        {
+            getHitEmoteShowTimer -= Time.deltaTime;
+            if (getHitEmoteShowTimer <= 0)
+            {
+                getHitCallout.SetActive(false);
+            }
+        }
+
+        if (UIController.instance != null)
         {
             if(UIController.instance.theIC != null)
             {
@@ -433,6 +445,11 @@ public class PlayerController : MonoBehaviour
         tiredEmoteShowTimer = tiredEmoteShowTime;
         tiredCallout.SetActive(true);
     }
+    void ShowGetHitEmote()
+    {
+        getHitEmoteShowTimer = getHitEmoteShowTime;
+        getHitCallout.SetActive(true);
+    }
 
 
     public void SwitchSeed(CropController.CropType newSeed)
@@ -455,4 +472,10 @@ public class PlayerController : MonoBehaviour
         stamina.SetToMax();
         staminaBar.Set(stamina.currentValue, stamina.maxValue);
     }    
+    public void TakeHit()
+    {
+        ShowGetHitEmote();
+
+        // - stamina
+    }
 }
