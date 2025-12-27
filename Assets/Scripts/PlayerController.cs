@@ -115,8 +115,8 @@ public class PlayerController : MonoBehaviour
 
         UIController.instance.SwitchSeed(seedCropType);
 
-        //stamina = new Stat(100, 100);
-        //staminaBar.Set(stamina.currentValue, stamina.maxValue);
+        stamina = new Stat(100, 100);
+        staminaBar.Set(stamina.currentValue, stamina.maxValue);
     }
 
     // Update is called once per frame
@@ -459,18 +459,18 @@ public class PlayerController : MonoBehaviour
 
     public void GetTired(int amount)
     {
-        //stamina.Subtract(amount);
-        //staminaBar.Set(stamina.currentValue, stamina.maxValue);
-        //if (stamina.currentValue <= 0)
-        //{
-        //    isExhausted = true;
-        //}
+        stamina.Subtract(amount);
+        staminaBar.Set(stamina.currentValue, stamina.maxValue);
+        if (stamina.currentValue <= 0)
+        {
+            isExhausted = true;
+        }
     }
 
     public void FullRest()
     {
-        //stamina.SetToMax();
-        //staminaBar.Set(stamina.currentValue, stamina.maxValue);
+        stamina.SetToMax();
+        staminaBar.Set(stamina.currentValue, stamina.maxValue);
     }    
     public void TakeHit()
     {
