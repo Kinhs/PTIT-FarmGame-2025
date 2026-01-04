@@ -28,6 +28,7 @@ public class UIController : MonoBehaviour
     public InventoryController theIC;
     public ShopController theShop;
     public FishShopController fishShop;
+    public ToolShopController toolShop;
 
     public Image seedImage;
 
@@ -39,6 +40,10 @@ public class UIController : MonoBehaviour
 
     public Image fadeScreen;
     public float fadeSpeed = 2f;
+
+    public GameObject fishingRodIcon;
+    public GameObject axeIcon;
+    public GameObject pickaxeIcon;
 
     public GameObject tutorialPopup;
 

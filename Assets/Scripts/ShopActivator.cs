@@ -6,7 +6,10 @@ public class ShopActivator : MonoBehaviour
     public enum ShopType
     {
         plant,
-        fish
+        fish,
+        fishingRod,
+        axe,
+        pickaxe
     }
 
     public ShopType type;
@@ -32,6 +35,13 @@ public class ShopActivator : MonoBehaviour
                         if (UIController.instance.fishShop.gameObject.activeSelf == false)
                         {
                             UIController.instance.fishShop.OpenClose();
+                        }
+                        break;
+
+                    case ShopType.axe:
+                        if (UIController.instance.toolShop.gameObject.activeSelf == false)
+                        {
+                            UIController.instance.toolShop.OpenClose(PlayerController.ToolType.axe);
                         }
                         break;
                 }
