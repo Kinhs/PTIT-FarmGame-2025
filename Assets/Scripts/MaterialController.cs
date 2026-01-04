@@ -17,6 +17,23 @@ public class MaterialController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        LoadFromSaveManager();
+    }
+
     public int woodAmount;
     public int stoneAmount;
+
+    public void LoadFromSaveManager()
+    {
+        woodAmount = SaveManager.instance.Data.wood;
+        stoneAmount = SaveManager.instance.Data.stone;
+    }
+
+    public void SaveToSaveManager()
+    {
+        SaveManager.instance.Data.wood = woodAmount;
+        SaveManager.instance.Data.stone = stoneAmount;
+    }
 }

@@ -19,6 +19,11 @@ public class CropController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        LoadFromSaveManager();
+    }
+
     public enum CropType
     {
         pumpkin,
@@ -95,6 +100,117 @@ public class CropController : MonoBehaviour
             {
                 info.cropAmount = 0;
             }
+        }
+    }
+
+    public void SaveToSaveManager()
+    {
+        foreach (CropInfo info in cropList)
+        {
+            if (info.cropType == CropType.pumpkin)
+            {
+                SaveManager.instance.Data.pumpkinCrop = info.cropAmount;
+                SaveManager.instance.Data.pumpkinSeed = info.seedAmount;
+            }
+
+            if (info.cropType == CropType.lettuce)
+            {
+                SaveManager.instance.Data.lettuceCrop = info.cropAmount;
+                SaveManager.instance.Data.lettuceSeed = info.seedAmount;
+            }
+
+            if (info.cropType == CropType.carrot)
+            {
+                SaveManager.instance.Data.carrotCrop = info.cropAmount;
+                SaveManager.instance.Data.carrotSeed = info.seedAmount;
+            }
+
+            if (info.cropType == CropType.hay)
+            {
+                SaveManager.instance.Data.hayCrop = info.cropAmount;
+                SaveManager.instance.Data.haySeed = info.seedAmount;
+            }
+
+            if (info.cropType == CropType.potato)
+            {
+                SaveManager.instance.Data.potatoCrop = info.cropAmount;
+                SaveManager.instance.Data.potatoSeed = info.seedAmount;
+            }
+
+            if (info.cropType == CropType.strawberry)
+            {
+                SaveManager.instance.Data.strawberryCrop = info.cropAmount;
+                SaveManager.instance.Data.strawberrySeed = info.seedAmount;
+            }
+
+            if (info.cropType == CropType.tomato)
+            {
+                SaveManager.instance.Data.tomatoCrop = info.cropAmount;
+                SaveManager.instance.Data.tomatoSeed = info.seedAmount;
+            }
+
+            if (info.cropType == CropType.avocado)
+            {
+                SaveManager.instance.Data.avocadoCrop = info.cropAmount;
+                SaveManager.instance.Data.avocadoSeed = info.seedAmount;
+            }
+
+        }
+    }
+
+    public void LoadFromSaveManager()
+    {
+        foreach (CropInfo info in cropList)
+        {
+            if (info.cropType == CropType.pumpkin)
+            {
+                info.cropAmount = SaveManager.instance.Data.pumpkinCrop;
+                info.seedAmount = SaveManager.instance.Data.pumpkinSeed;
+            }
+
+            if (info.cropType == CropType.lettuce)
+            {
+                info.cropAmount = SaveManager.instance.Data.lettuceCrop;
+                info.seedAmount = SaveManager.instance.Data.lettuceSeed;
+            }
+
+            if (info.cropType == CropType.carrot)
+            {
+                info.cropAmount = SaveManager.instance.Data.carrotCrop;
+                info.seedAmount = SaveManager.instance.Data.carrotSeed;
+            }
+
+            if (info.cropType == CropType.hay)
+            {
+                info.cropAmount = SaveManager.instance.Data.hayCrop;
+                info.seedAmount = SaveManager.instance.Data.haySeed;
+            }
+
+            if (info.cropType == CropType.potato)
+            {
+                info.cropAmount = SaveManager.instance.Data.potatoCrop;
+                info.seedAmount = SaveManager.instance.Data.potatoSeed;
+            }
+
+            if (info.cropType == CropType.strawberry)
+            {
+                info.cropAmount = SaveManager.instance.Data.strawberryCrop;
+                info.seedAmount = SaveManager.instance.Data.strawberrySeed;
+            }
+
+            if (info.cropType == CropType.tomato)
+            {
+                info.cropAmount = SaveManager.instance.Data.tomatoCrop;
+                info.seedAmount = SaveManager.instance.Data.tomatoSeed;
+            }
+
+            if (info.cropType == CropType.avocado)
+            {
+                info.cropAmount = SaveManager.instance.Data.avocadoCrop;
+                info.seedAmount = SaveManager.instance.Data.avocadoSeed;
+            }
+
+
         }
     }
 }

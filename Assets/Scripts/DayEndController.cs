@@ -24,9 +24,13 @@ public class DayEndController : MonoBehaviour
         incomeText.text = "+ $" + income;
 
         CurrencyController.instance.AddMoney(income);
-        SaveManager.instance.Data.money = CurrencyController.instance.currentMoney;
 
         AudioManager.instance.PlaySFXPitchAdjusted(5);
+
+        SaveManager.instance.Data.money = CurrencyController.instance.currentMoney;
+        CropController.instance.SaveToSaveManager();
+        FishController.instance.SaveToSaveManager();
+        MaterialController.instance.SaveToSaveManager();
     }
 
     private void Update()
