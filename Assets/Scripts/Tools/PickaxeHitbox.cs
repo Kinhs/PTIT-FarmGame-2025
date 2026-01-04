@@ -6,7 +6,12 @@ public class PickaxeHitbox : MonoBehaviour
     {
         if (other.CompareTag("Ore"))
         {
-            other.GetComponent<Ore>()?.TakeHit();
+            Ore ore = other.GetComponent<Ore>();
+            if (ore != null)
+            {
+                if (!ore.isDepleted) PlayerController.instance.GetTired(5);
+                ore.TakeHit();
+            }
         }
         else if (other.CompareTag("Enemy"))
         {

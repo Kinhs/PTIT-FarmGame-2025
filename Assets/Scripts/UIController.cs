@@ -103,6 +103,7 @@ public class UIController : MonoBehaviour
         {
             timeText.text = Mathf.FloorToInt(currentTime - 24) + "AM";
         }
+        timeText.text = timeText.text + " Day " + TimeController.instance.currentDay;
     }
 
     public void SwitchSeed(CropController.CropType crop)

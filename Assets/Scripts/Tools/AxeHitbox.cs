@@ -6,7 +6,12 @@ public class AxeHitbox : MonoBehaviour
     {
         if (other.CompareTag("Tree"))
         {
-            other.GetComponent<WoodTree>()?.TakeHit();
+            WoodTree tree = other.GetComponent<WoodTree>();
+            if (tree != null)
+            {
+                if (!tree.isChopped) PlayerController.instance.GetTired(5);
+                tree.TakeHit();
+            }
         }
         else if (other.CompareTag("Enemy"))
         {

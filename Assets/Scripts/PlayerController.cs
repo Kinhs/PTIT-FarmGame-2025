@@ -349,7 +349,6 @@ public class PlayerController : MonoBehaviour
             ShowTiredEmote();
             return;
         }
-        GetTired(5);
         pickaxeController.Use();
     }
 
@@ -360,7 +359,6 @@ public class PlayerController : MonoBehaviour
             ShowTiredEmote();
             return;
         }
-        GetTired(5);
         axeController.Use();
     }
 
@@ -484,11 +482,11 @@ public class PlayerController : MonoBehaviour
     {
         stamina.SetToMax();
         staminaBar.Set(stamina.currentValue, stamina.maxValue);
+        isExhausted = false;
     }    
     public void TakeHit()
     {
         ShowGetHitEmote();
-
-        // - stamina
+        GetTired(10);
     }
 }

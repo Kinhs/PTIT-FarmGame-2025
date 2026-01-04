@@ -15,7 +15,7 @@ public class WoodTree : MonoBehaviour
     private int currentHits;
     private int woodReward;
     private Vector3 originalPosition;
-    private bool isChopped;
+    [HideInInspector] public bool isChopped;
 
     private void Awake()
     {
