@@ -7,7 +7,6 @@ public class ShopActivator : MonoBehaviour
     {
         plant,
         fish,
-        fishingRod,
         axe,
         pickaxe
     }
@@ -42,6 +41,13 @@ public class ShopActivator : MonoBehaviour
                         if (UIController.instance.toolShop.gameObject.activeSelf == false)
                         {
                             UIController.instance.toolShop.OpenClose(PlayerController.ToolType.axe);
+                        }
+                        break;
+
+                    case ShopType.pickaxe:
+                        if (UIController.instance.toolShop.gameObject.activeSelf == false)
+                        {
+                            UIController.instance.toolShop.OpenClose(PlayerController.ToolType.pickaxe);
                         }
                         break;
                 }

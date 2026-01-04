@@ -3,6 +3,7 @@ using UnityEngine;
 public class ToolShopController : MonoBehaviour
 {
     public ShopToolDisplay axeDisplay;
+    public ShopToolDisplay pickaxeDisplay;
 
     public void OpenClose(PlayerController.ToolType toolType)
     {
@@ -25,11 +26,17 @@ public class ToolShopController : MonoBehaviour
     public void UpdateAllDisplay(PlayerController.ToolType toolType)
     {
         axeDisplay.gameObject.SetActive(false);
+        pickaxeDisplay.gameObject.SetActive(false);
 
         if (toolType == PlayerController.ToolType.axe)
         {
             axeDisplay.gameObject.SetActive(true);
             axeDisplay.UpdateDisplay();
+        }
+        else if (toolType == PlayerController.ToolType.pickaxe)
+        {
+            pickaxeDisplay.gameObject.SetActive(true);
+            pickaxeDisplay.UpdateDisplay();
         }
     }
 }

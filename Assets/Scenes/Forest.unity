@@ -8423,7 +8423,7 @@ GameObject:
   - component: {fileID: 555858033}
   - component: {fileID: 555858032}
   m_Layer: 0
-  m_Name: NPC Blacksmith
+  m_Name: NPC Lumberjack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28135,7 +28135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afe6d271ac5fe54d9d8102be1e85477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopActivator
-  type: 3
+  type: 2
 --- !u!61 &2084283170
 BoxCollider2D:
   m_ObjectHideFlags: 0
