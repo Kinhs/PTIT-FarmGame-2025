@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class DayEndController : MonoBehaviour
 {
+    public static float baseIncome = 10f;
 
     public TMP_Text dayText;
+    public TMP_Text incomeText;
 
     public string wakeUpScene;
 
@@ -17,6 +19,12 @@ public class DayEndController : MonoBehaviour
         {
             dayText.text = "- Day " + TimeController.instance.currentDay + " -";
         }
+
+        float income = CalculateIncome();
+        incomeText.text = "+ $" + income;
+
+        CurrencyController.instance.AddMoney(income);
+
         AudioManager.instance.PlaySFXPitchAdjusted(5);
     }
 
@@ -29,5 +37,21 @@ public class DayEndController : MonoBehaviour
 
             SceneManager.LoadScene(wakeUpScene);
         }
+    }
+
+    float CalculateIncome()
+    {
+        float result = baseIncome;
+
+        if (SaveManager.instance.Data.builtWell)
+            result += ConstructionDatabase.instance.GetData(Construction.ConstructionType.Well).dailyIncome;
+        if (SaveManager.instance.Data.builtWindmill)
+            result += ConstructionDatabase.instance.GetData(Construction.ConstructionType.Windmill).dailyIncome;
+        if (SaveManager.instance.Data.builtGreenhouse)
+            result += ConstructionDatabase.instance.GetData(Construction.ConstructionType.Greenhouse).dailyIncome;
+        if (SaveManager.instance.Data.builtHydroelectric)
+            result += ConstructionDatabase.instance.GetData(Construction.ConstructionType.Hydroelectric).dailyIncome;
+
+        return result;
     }
 }
