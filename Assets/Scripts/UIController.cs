@@ -52,6 +52,10 @@ public class UIController : MonoBehaviour
     {
         fadeScreen.gameObject.SetActive(true);
         StartCoroutine(FadeIn());
+
+        if (SaveManager.instance.Data.hasFishingRod) fishingRodIcon.SetActive(true);
+        if (SaveManager.instance.Data.hasAxe) axeIcon.SetActive(true);
+        if (SaveManager.instance.Data.hasPickaxe) pickaxeIcon.SetActive(true);
     }
 
     // Update is called once per frame

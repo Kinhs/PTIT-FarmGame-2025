@@ -11,17 +11,17 @@ public class ShopToolDisplay : MonoBehaviour
     {
         if (toolType == PlayerController.ToolType.axe)
         {
-            if (PlayerController.instance.hasAxe) SetOwned();
+            if (SaveManager.instance.Data.hasAxe) SetOwned();
             else SetAvailable(ToolPriceController.instance.axePrice);
         }
         else if (toolType == PlayerController.ToolType.pickaxe)
         {
-            if (PlayerController.instance.hasPickaxe) SetOwned();
+            if (SaveManager.instance.Data.hasPickaxe) SetOwned();
             else SetAvailable(ToolPriceController.instance.pickaxePrice);
         }
         else if (toolType == PlayerController.ToolType.fishingRod)
         {
-            if (PlayerController.instance.hasFishingRod) SetOwned();
+            if (SaveManager.instance.Data.hasFishingRod) SetOwned();
             else SetAvailable(ToolPriceController.instance.fishingRodPrice);
         }
     }
@@ -45,7 +45,7 @@ public class ShopToolDisplay : MonoBehaviour
             if (CurrencyController.instance.CheckMoney(ToolPriceController.instance.axePrice))
             {
                 CurrencyController.instance.SpendMoney(ToolPriceController.instance.axePrice);
-                PlayerController.instance.hasAxe = true;
+                SaveManager.instance.Data.hasAxe = true;
                 UIController.instance.axeIcon.SetActive(true);
             }
         }
@@ -54,7 +54,7 @@ public class ShopToolDisplay : MonoBehaviour
             if (CurrencyController.instance.CheckMoney(ToolPriceController.instance.pickaxePrice))
             {
                 CurrencyController.instance.SpendMoney(ToolPriceController.instance.pickaxePrice);
-                PlayerController.instance.hasPickaxe = true;
+                SaveManager.instance.Data.hasPickaxe = true;
                 UIController.instance.pickaxeIcon.SetActive(true);
             }
         }
@@ -63,7 +63,7 @@ public class ShopToolDisplay : MonoBehaviour
             if (CurrencyController.instance.CheckMoney(ToolPriceController.instance.fishingRodPrice))
             {
                 CurrencyController.instance.SpendMoney(ToolPriceController.instance.fishingRodPrice);
-                PlayerController.instance.hasFishingRod = true;
+                SaveManager.instance.Data.hasFishingRod = true;
                 UIController.instance.fishingRodIcon.SetActive(true);
             }
         }
