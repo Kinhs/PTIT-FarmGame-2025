@@ -482,6 +482,7 @@ public class PlayerController : MonoBehaviour
     {
         stamina.SetToMax();
         staminaBar.Set(stamina.currentValue, stamina.maxValue);
+        isExhausted = false;
     }    
     public void TakeHit()
     {
