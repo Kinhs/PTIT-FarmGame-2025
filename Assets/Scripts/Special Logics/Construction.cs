@@ -38,6 +38,14 @@ public class Construction : MonoBehaviour
         infoObject.SetActive(false);
 
         UpdateInfoUI();
+
+        if ((constructionType == ConstructionType.Well && SaveManager.instance.Data.builtWell == true)
+        || (constructionType == ConstructionType.Windmill && SaveManager.instance.Data.builtWindmill == true)
+        || (constructionType == ConstructionType.Greenhouse && SaveManager.instance.Data.builtGreenhouse == true)
+        || (constructionType == ConstructionType.Hydroelectric && SaveManager.instance.Data.builtHydroelectric == true))
+        {
+            Build();
+        }
     }
 
     private void Update()
@@ -73,6 +81,11 @@ public class Construction : MonoBehaviour
         CurrencyController.instance.SpendMoney(data.moneyCost);
         MaterialController.instance.woodAmount -= data.woodCost;
         MaterialController.instance.stoneAmount -= data.stoneCost;
+
+        if (constructionType == ConstructionType.Well) SaveManager.instance.Data.builtWell = true;
+        else if (constructionType == ConstructionType.Windmill) SaveManager.instance.Data.builtWindmill = true;
+        else if (constructionType == ConstructionType.Greenhouse) SaveManager.instance.Data.builtGreenhouse= true;
+        else if (constructionType == ConstructionType.Hydroelectric) SaveManager.instance.Data.builtHydroelectric = true;
 
         Build();
     }
