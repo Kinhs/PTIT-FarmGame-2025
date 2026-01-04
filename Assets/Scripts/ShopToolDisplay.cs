@@ -19,6 +19,11 @@ public class ShopToolDisplay : MonoBehaviour
             if (PlayerController.instance.hasPickaxe) SetOwned();
             else SetAvailable(ToolPriceController.instance.pickaxePrice);
         }
+        else if (toolType == PlayerController.ToolType.fishingRod)
+        {
+            if (PlayerController.instance.hasFishingRod) SetOwned();
+            else SetAvailable(ToolPriceController.instance.fishingRodPrice);
+        }
     }
 
     void SetOwned()
@@ -51,6 +56,15 @@ public class ShopToolDisplay : MonoBehaviour
                 CurrencyController.instance.SpendMoney(ToolPriceController.instance.pickaxePrice);
                 PlayerController.instance.hasPickaxe = true;
                 UIController.instance.pickaxeIcon.SetActive(true);
+            }
+        }
+        else if (toolType == PlayerController.ToolType.fishingRod)
+        {
+            if (CurrencyController.instance.CheckMoney(ToolPriceController.instance.fishingRodPrice))
+            {
+                CurrencyController.instance.SpendMoney(ToolPriceController.instance.fishingRodPrice);
+                PlayerController.instance.hasFishingRod = true;
+                UIController.instance.fishingRodIcon.SetActive(true);
             }
         }
 

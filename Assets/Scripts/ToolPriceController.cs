@@ -19,4 +19,5 @@ public class ToolPriceController : MonoBehaviour
 
     public float axePrice;
     public float pickaxePrice;
+    public float fishingRodPrice;
 }
