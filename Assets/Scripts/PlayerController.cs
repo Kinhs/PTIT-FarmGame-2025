@@ -349,7 +349,6 @@ public class PlayerController : MonoBehaviour
             ShowTiredEmote();
             return;
         }
-        GetTired(5);
         pickaxeController.Use();
     }
 
@@ -360,7 +359,6 @@ public class PlayerController : MonoBehaviour
             ShowTiredEmote();
             return;
         }
-        GetTired(5);
         axeController.Use();
     }
 
@@ -488,7 +486,6 @@ public class PlayerController : MonoBehaviour
     public void TakeHit()
     {
         ShowGetHitEmote();
-
-        // - stamina
+        GetTired(10);
     }
 }

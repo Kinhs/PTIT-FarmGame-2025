@@ -15,7 +15,7 @@ public class Ore : MonoBehaviour
     private int currentHits;
     private int rewardAmount;
     private Vector3 originalPosition;
-    private bool isDepleted;
+    [HideInInspector] public bool isDepleted;
 
     private void Awake()
     {
