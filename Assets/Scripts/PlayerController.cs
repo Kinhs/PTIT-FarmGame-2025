@@ -368,8 +368,6 @@ public class PlayerController : MonoBehaviour
                 return;
             }
 
-            GetTired(5);
-
             Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
             mousePos.z = 0f;
@@ -395,6 +393,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             fishingRodController.Retract();
+            GetTired(5);
         }
     }
 
