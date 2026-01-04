@@ -1676,6 +1676,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveManager
   Data:
+    day: 1
+    money: 500
+    hasFishingRod: 0
+    hasAxe: 0
+    hasPickaxe: 0
+    pumpkinSeed: 0
+    lettuceSeed: 0
+    carrotSeed: 0
+    haySeed: 0
+    potatoSeed: 0
+    strawberrySeed: 0
+    tomatoSeed: 0
+    avocadoSeed: 0
+    pumpkinCrop: 0
+    lettuceCrop: 0
+    carrotCrop: 0
+    hayCrop: 0
+    potatoCrop: 0
+    strawberryCrop: 0
+    tomatoCrop: 0
+    avocadoCrop: 0
+    grayFish: 0
+    greenFish: 0
+    blueFish: 0
+    orangeFish: 0
+    redFish: 0
+    wood: 0
+    stone: 0
     builtWell: 0
     builtWindmill: 0
     builtGreenhouse: 0
