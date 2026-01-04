@@ -424,6 +424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DayEndController
   dayText: {fileID: 470670290}
+  incomeText: {fileID: 60990401}
   wakeUpScene: Indoor
 --- !u!114 &497412505
 MonoBehaviour:
