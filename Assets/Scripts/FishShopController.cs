@@ -3,6 +3,7 @@ using UnityEngine;
 public class FishShopController : MonoBehaviour
 {
     public ShopFishDisplay[] fishes;
+    public ShopToolDisplay fishingRod;
 
     public void OpenClose()
     {
@@ -23,5 +24,6 @@ public class FishShopController : MonoBehaviour
         {
             fish.UpdateDisplay();
         }
+        fishingRod.UpdateDisplay();
     }
 }

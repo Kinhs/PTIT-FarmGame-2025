@@ -105,6 +105,10 @@ public class PlayerController : MonoBehaviour
     public Stat stamina;
     [SerializeField] StatusBar staminaBar;
 
+    public bool hasFishingRod;
+    public bool hasAxe;
+    public bool hasPickaxe;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Start()
@@ -249,14 +253,23 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (currentTool != ToolType.fishingRod && fishingRod.activeSelf == true) fishingRod.SetActive(false);
-        if (currentTool == ToolType.fishingRod && fishingRod.activeSelf == false) fishingRod.SetActive(true);
+        if (hasFishingRod)
+        {
+            if (currentTool != ToolType.fishingRod && fishingRod.activeSelf == true) fishingRod.SetActive(false);
+            if (currentTool == ToolType.fishingRod && fishingRod.activeSelf == false) fishingRod.SetActive(true);
+        }
 
-        if (currentTool != ToolType.axe && axe.activeSelf == true) axe.SetActive(false);
-        if (currentTool == ToolType.axe && axe.activeSelf == false) axe.SetActive(true);
+        if (hasAxe)
+        {
+            if (currentTool != ToolType.axe && axe.activeSelf == true) axe.SetActive(false);
+            if (currentTool == ToolType.axe && axe.activeSelf == false) axe.SetActive(true);
+        }
 
-        if (currentTool != ToolType.pickaxe && pickaxe.activeSelf == true) pickaxe.SetActive(false);
-        if (currentTool == ToolType.pickaxe && pickaxe.activeSelf == false) pickaxe.SetActive(true);
+        if (hasPickaxe)
+        {
+            if (currentTool != ToolType.pickaxe && pickaxe.activeSelf == true) pickaxe.SetActive(false);
+            if (currentTool == ToolType.pickaxe && pickaxe.activeSelf == false) pickaxe.SetActive(true);
+        }
 
 
         // PREVENTING MOVING WHILE FISHING
@@ -310,19 +323,19 @@ public class PlayerController : MonoBehaviour
         }
 
         // USING FISHING ROD
-        if (currentTool == ToolType.fishingRod && Mouse.current.leftButton.wasPressedThisFrame)
+        if (hasFishingRod && currentTool == ToolType.fishingRod && Mouse.current.leftButton.wasPressedThisFrame)
         {
             UseFishingRod();
         }
 
         // USING AXE
-        if (currentTool == ToolType.axe && Mouse.current.leftButton.wasPressedThisFrame)
+        if (hasAxe && currentTool == ToolType.axe && Mouse.current.leftButton.wasPressedThisFrame)
         {
             UseAxe();
         }
 
         // USING PICKAXE
-        if (currentTool == ToolType.pickaxe && Mouse.current.leftButton.wasPressedThisFrame)
+        if (hasPickaxe && currentTool == ToolType.pickaxe && Mouse.current.leftButton.wasPressedThisFrame)
         {
             UsePickaxe();
         }
