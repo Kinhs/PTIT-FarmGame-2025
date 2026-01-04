@@ -81,6 +81,7 @@ public class Construction : MonoBehaviour
         CurrencyController.instance.SpendMoney(data.moneyCost);
         MaterialController.instance.woodAmount -= data.woodCost;
         MaterialController.instance.stoneAmount -= data.stoneCost;
+        PlayerController.instance.GetTired(100);
 
         if (constructionType == ConstructionType.Well) SaveManager.instance.Data.builtWell = true;
         else if (constructionType == ConstructionType.Windmill) SaveManager.instance.Data.builtWindmill = true;
