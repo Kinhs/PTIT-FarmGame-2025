@@ -153,6 +153,7 @@ public class UIController : MonoBehaviour
         Destroy(MaterialController.instance.gameObject);
         Destroy(MaterialInfo.instance.gameObject);
         Destroy(ToolPriceController.instance.gameObject);
+        Destroy(EndGameScreenController.instance.gameObject);
 
         AudioManager.instance.PlayTitle();
         AudioManager.instance.PlaySFXPitchAdjusted(6);
