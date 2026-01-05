@@ -20,6 +20,11 @@ public class FishController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        LoadFromSaveManager();
+    }
+
     public enum FishType
     {
         gray,
@@ -74,6 +79,50 @@ public class FishController : MonoBehaviour
                 info.amount = 0;
                 AudioManager.instance.PlaySFXPitchAdjusted(6);
             }
+        }
+    }
+
+    public void LoadFromSaveManager()
+    {
+        foreach (FishInfo info in fishList)
+        {
+            if (info.fishType == FishType.gray)
+                info.amount = SaveManager.instance.Data.grayFish;
+
+            if (info.fishType == FishType.green)
+                info.amount = SaveManager.instance.Data.greenFish;
+
+            if (info.fishType == FishType.blue)
+                info.amount = SaveManager.instance.Data.blueFish;
+
+            if (info.fishType == FishType.orange)
+                info.amount = SaveManager.instance.Data.orangeFish;
+
+            if (info.fishType == FishType.red)
+                info.amount = SaveManager.instance.Data.redFish;
+
+        }
+    }
+
+    public void SaveToSaveManager()
+    {
+        foreach (FishInfo info in fishList)
+        {
+            if (info.fishType == FishType.gray)
+                SaveManager.instance.Data.grayFish = info.amount;
+
+            if (info.fishType == FishType.green)
+                SaveManager.instance.Data.greenFish = info.amount;
+
+            if (info.fishType == FishType.blue)
+                SaveManager.instance.Data.blueFish = info.amount;
+
+            if (info.fishType == FishType.orange)
+                SaveManager.instance.Data.orangeFish = info.amount;
+
+            if (info.fishType == FishType.red)
+                SaveManager.instance.Data.redFish = info.amount;
+
         }
     }
 }

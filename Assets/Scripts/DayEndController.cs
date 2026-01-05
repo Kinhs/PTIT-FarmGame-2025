@@ -25,7 +25,16 @@ public class DayEndController : MonoBehaviour
 
         CurrencyController.instance.AddMoney(income);
 
+        if (EndGameScreenController.instance.IsGoalReached() && !EndGameScreenController.instance.hasShown) 
+            EndGameScreenController.instance.ShowEndGameScreen();
+
         AudioManager.instance.PlaySFXPitchAdjusted(5);
+
+        SaveManager.instance.Data.money = CurrencyController.instance.currentMoney;
+        CropController.instance.SaveToSaveManager();
+        FishController.instance.SaveToSaveManager();
+        MaterialController.instance.SaveToSaveManager();
+        GridInfo.instance.SaveToSaveManager();
     }
 
     private void Update()

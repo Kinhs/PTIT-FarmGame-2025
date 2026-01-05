@@ -105,10 +105,6 @@ public class PlayerController : MonoBehaviour
     public Stat stamina;
     [SerializeField] StatusBar staminaBar;
 
-    public bool hasFishingRod;
-    public bool hasAxe;
-    public bool hasPickaxe;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Start()
@@ -253,19 +249,19 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (hasFishingRod)
+        if (SaveManager.instance.Data.hasFishingRod)
         {
             if (currentTool != ToolType.fishingRod && fishingRod.activeSelf == true) fishingRod.SetActive(false);
             if (currentTool == ToolType.fishingRod && fishingRod.activeSelf == false) fishingRod.SetActive(true);
         }
 
-        if (hasAxe)
+        if (SaveManager.instance.Data.hasAxe)
         {
             if (currentTool != ToolType.axe && axe.activeSelf == true) axe.SetActive(false);
             if (currentTool == ToolType.axe && axe.activeSelf == false) axe.SetActive(true);
         }
 
-        if (hasPickaxe)
+        if (SaveManager.instance.Data.hasPickaxe)
         {
             if (currentTool != ToolType.pickaxe && pickaxe.activeSelf == true) pickaxe.SetActive(false);
             if (currentTool == ToolType.pickaxe && pickaxe.activeSelf == false) pickaxe.SetActive(true);
@@ -323,19 +319,19 @@ public class PlayerController : MonoBehaviour
         }
 
         // USING FISHING ROD
-        if (hasFishingRod && currentTool == ToolType.fishingRod && Mouse.current.leftButton.wasPressedThisFrame)
+        if (SaveManager.instance.Data.hasFishingRod && currentTool == ToolType.fishingRod && Mouse.current.leftButton.wasPressedThisFrame)
         {
             UseFishingRod();
         }
 
         // USING AXE
-        if (hasAxe && currentTool == ToolType.axe && Mouse.current.leftButton.wasPressedThisFrame)
+        if (SaveManager.instance.Data.hasAxe && currentTool == ToolType.axe && Mouse.current.leftButton.wasPressedThisFrame)
         {
             UseAxe();
         }
 
         // USING PICKAXE
-        if (hasPickaxe && currentTool == ToolType.pickaxe && Mouse.current.leftButton.wasPressedThisFrame)
+        if (SaveManager.instance.Data.hasPickaxe && currentTool == ToolType.pickaxe && Mouse.current.leftButton.wasPressedThisFrame)
         {
             UsePickaxe();
         }
@@ -372,8 +368,6 @@ public class PlayerController : MonoBehaviour
                 return;
             }
 
-            GetTired(5);
-
             Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
             mousePos.z = 0f;
@@ -399,6 +393,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             fishingRodController.Retract();
+            GetTired(5);
         }
     }
 

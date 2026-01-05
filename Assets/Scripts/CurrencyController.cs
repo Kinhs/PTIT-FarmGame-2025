@@ -21,6 +21,7 @@ public class CurrencyController : MonoBehaviour
 
     private void Start()
     {
+        currentMoney = SaveManager.instance.Data.money;
         UIController.instance.UpdateMoneyText(currentMoney);
     }
 

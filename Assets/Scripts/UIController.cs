@@ -52,6 +52,10 @@ public class UIController : MonoBehaviour
     {
         fadeScreen.gameObject.SetActive(true);
         StartCoroutine(FadeIn());
+
+        if (SaveManager.instance.Data.hasFishingRod) fishingRodIcon.SetActive(true);
+        if (SaveManager.instance.Data.hasAxe) axeIcon.SetActive(true);
+        if (SaveManager.instance.Data.hasPickaxe) pickaxeIcon.SetActive(true);
     }
 
     // Update is called once per frame
@@ -145,6 +149,11 @@ public class UIController : MonoBehaviour
         Destroy(TimeController.instance.gameObject);
         Destroy(CropController.instance.gameObject);
         Destroy(CurrencyController.instance.gameObject);
+        Destroy(FishController.instance.gameObject);
+        Destroy(MaterialController.instance.gameObject);
+        Destroy(MaterialInfo.instance.gameObject);
+        Destroy(ToolPriceController.instance.gameObject);
+        Destroy(EndGameScreenController.instance.gameObject);
 
         AudioManager.instance.PlayTitle();
         AudioManager.instance.PlaySFXPitchAdjusted(6);

@@ -55,6 +55,7 @@ public class TimeController : MonoBehaviour
 
     void Start()
     {
+        currentDay = SaveManager.instance.Data.day;
         currentTime = dayStart;
         timeActive = true;
     }
@@ -104,6 +105,7 @@ public class TimeController : MonoBehaviour
     {
         timeActive = false;
         currentDay++;
+        SaveManager.instance.Data.day = currentDay;
 
         if (GridInfo.instance != null)
         {
