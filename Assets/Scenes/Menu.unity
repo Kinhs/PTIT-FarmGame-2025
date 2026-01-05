@@ -1681,7 +1681,7 @@ MonoBehaviour:
     hasFishingRod: 0
     hasAxe: 0
     hasPickaxe: 0
-    pumpkinSeed: 0
+    pumpkinSeed: 1
     lettuceSeed: 0
     carrotSeed: 0
     haySeed: 0
@@ -1708,6 +1708,8 @@ MonoBehaviour:
     builtWindmill: 0
     builtGreenhouse: 0
     builtHydroelectric: 0
+    hasGrid: 0
+    grid: []
 --- !u!1 &719039583
 GameObject:
   m_ObjectHideFlags: 0

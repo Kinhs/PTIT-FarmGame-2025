@@ -149,6 +149,10 @@ public class UIController : MonoBehaviour
         Destroy(TimeController.instance.gameObject);
         Destroy(CropController.instance.gameObject);
         Destroy(CurrencyController.instance.gameObject);
+        Destroy(FishController.instance.gameObject);
+        Destroy(MaterialController.instance.gameObject);
+        Destroy(MaterialInfo.instance.gameObject);
+        Destroy(ToolPriceController.instance.gameObject);
 
         AudioManager.instance.PlayTitle();
         AudioManager.instance.PlaySFXPitchAdjusted(6);

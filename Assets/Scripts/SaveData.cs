@@ -50,4 +50,8 @@ public class SaveData
     public bool builtWindmill;
     public bool builtGreenhouse;
     public bool builtHydroelectric;
+
+    [Header("Grid")]
+    public bool hasGrid;
+    public List<InfoRow> grid;
 }

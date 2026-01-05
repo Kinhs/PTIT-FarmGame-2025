@@ -31,6 +31,7 @@ public class DayEndController : MonoBehaviour
         CropController.instance.SaveToSaveManager();
         FishController.instance.SaveToSaveManager();
         MaterialController.instance.SaveToSaveManager();
+        GridInfo.instance.SaveToSaveManager();
     }
 
     private void Update()

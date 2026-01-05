@@ -40389,7 +40389,7 @@ MonoBehaviour:
     cropAmount: 0
     growthFailChance: 20
     seedPrice: 1
-    cropPrice: 2
+    cropPrice: 3
   - cropType: 1
     finalCrop: {fileID: 5508725064705088119, guid: 688a17423db43294093ccb5c6916461b, type: 3}
     seedType: {fileID: 2614870373251885436, guid: 688a17423db43294093ccb5c6916461b, type: 3}
@@ -40401,7 +40401,7 @@ MonoBehaviour:
     cropAmount: 0
     growthFailChance: 20
     seedPrice: 2
-    cropPrice: 4
+    cropPrice: 6
   - cropType: 2
     finalCrop: {fileID: -68751727340038015, guid: 688a17423db43294093ccb5c6916461b, type: 3}
     seedType: {fileID: -2693009140137883590, guid: 688a17423db43294093ccb5c6916461b, type: 3}
@@ -40413,7 +40413,7 @@ MonoBehaviour:
     cropAmount: 0
     growthFailChance: 40
     seedPrice: 3
-    cropPrice: 5
+    cropPrice: 9
   - cropType: 3
     finalCrop: {fileID: 6099581493293703690, guid: 688a17423db43294093ccb5c6916461b, type: 3}
     seedType: {fileID: -956252262595852801, guid: 688a17423db43294093ccb5c6916461b, type: 3}
@@ -40425,7 +40425,7 @@ MonoBehaviour:
     cropAmount: 0
     growthFailChance: 50
     seedPrice: 4
-    cropPrice: 7
+    cropPrice: 12
   - cropType: 4
     finalCrop: {fileID: -5428206428529569624, guid: 688a17423db43294093ccb5c6916461b, type: 3}
     seedType: {fileID: 6738218706411903907, guid: 688a17423db43294093ccb5c6916461b, type: 3}
@@ -40437,7 +40437,7 @@ MonoBehaviour:
     cropAmount: 0
     growthFailChance: 50
     seedPrice: 5
-    cropPrice: 9
+    cropPrice: 15
   - cropType: 5
     finalCrop: {fileID: -7833671090200325546, guid: 688a17423db43294093ccb5c6916461b, type: 3}
     seedType: {fileID: -6338023803479276477, guid: 688a17423db43294093ccb5c6916461b, type: 3}
@@ -40449,7 +40449,7 @@ MonoBehaviour:
     cropAmount: 0
     growthFailChance: 60
     seedPrice: 6
-    cropPrice: 12
+    cropPrice: 18
   - cropType: 6
     finalCrop: {fileID: 5860025163644826426, guid: 688a17423db43294093ccb5c6916461b, type: 3}
     seedType: {fileID: 4533227004153260592, guid: 688a17423db43294093ccb5c6916461b, type: 3}
@@ -40461,7 +40461,7 @@ MonoBehaviour:
     cropAmount: 0
     growthFailChance: 70
     seedPrice: 7
-    cropPrice: 15
+    cropPrice: 21
   - cropType: 7
     finalCrop: {fileID: -7583409310137716746, guid: 688a17423db43294093ccb5c6916461b, type: 3}
     seedType: {fileID: -4538752222985096420, guid: 688a17423db43294093ccb5c6916461b, type: 3}
@@ -40473,7 +40473,7 @@ MonoBehaviour:
     cropAmount: 0
     growthFailChance: 70
     seedPrice: 8
-    cropPrice: 18
+    cropPrice: 24
 --- !u!4 &324977363
 Transform:
   m_ObjectHideFlags: 0
@@ -54817,9 +54817,6 @@ MonoBehaviour:
     maxValue: 0
     currentValue: 0
   staminaBar: {fileID: 1030312993}
-  hasFishingRod: 0
-  hasAxe: 0
-  hasPickaxe: 0
 --- !u!70 &1047367169
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

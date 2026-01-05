@@ -94,6 +94,78 @@ public class GridInfo : MonoBehaviour
     //        GrowCrop();
     //    }
     //}
+
+    public void SaveToSaveManager()
+    {
+        SaveData data = SaveManager.instance.Data;
+
+        data.hasGrid = hasGrid;
+
+        if (!hasGrid)
+        {
+            data.grid = null;
+            return;
+        }
+
+        data.grid = new List<InfoRow>();
+
+        for (int y = 0; y < theGrid.Count; y++)
+        {
+            InfoRow newRow = new InfoRow();
+
+            for (int x = 0; x < theGrid[y].blocks.Count; x++)
+            {
+                BlockInfo source = theGrid[y].blocks[x];
+
+                BlockInfo newBlock = new BlockInfo
+                {
+                    isWatered = source.isWatered,
+                    currentStage = source.currentStage,
+                    cropType = source.cropType,
+                    growFailChance = source.growFailChance
+                };
+
+                newRow.blocks.Add(newBlock);
+            }
+
+            data.grid.Add(newRow);
+        }
+    }
+
+    public void LoadFromSaveManager()
+    {
+        SaveData data = SaveManager.instance.Data;
+
+        hasGrid = data.hasGrid;
+
+        if (!hasGrid || data.grid == null)
+            return;
+
+        theGrid = new List<InfoRow>();
+
+        for (int y = 0; y < data.grid.Count; y++)
+        {
+            InfoRow newRow = new InfoRow();
+
+            for (int x = 0; x < data.grid[y].blocks.Count; x++)
+            {
+                BlockInfo source = data.grid[y].blocks[x];
+
+                BlockInfo newBlock = new BlockInfo
+                {
+                    isWatered = source.isWatered,
+                    currentStage = source.currentStage,
+                    cropType = source.cropType,
+                    growFailChance = source.growFailChance
+                };
+
+                newRow.blocks.Add(newBlock);
+            }
+
+            theGrid.Add(newRow);
+        }
+    }
+
 }
 
 
