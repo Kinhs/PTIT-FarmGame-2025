@@ -112,7 +112,7 @@ public class FishingRodController : MonoBehaviour
         float waitTime = Random.Range(biteTimeMin, biteTimeMax);
         if (isInBonusZone)
         {
-            waitTime /= 2;
+            waitTime /= 3;
         }
 
         yield return new WaitForSeconds(waitTime);

@@ -436,9 +436,11 @@ public class PlayerController : MonoBehaviour
             }
 
             // Final validation
-            Collider2D finalBlocker = Physics2D.OverlapPoint(targetPos, fishingBlockerLayer);
+            Collider2D finalBlocker =
+                Physics2D.OverlapPoint(targetPos, fishingBlockerLayer);
 
-            if (finalBlocker != null) return;
+            if (finalBlocker != null && finalBlocker.CompareTag("Bridge"))
+                return;
 
             // Evaluate bonus zone at the final target position
             fishingRodController.isInBonusZone =
