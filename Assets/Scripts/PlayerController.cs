@@ -372,23 +372,66 @@ public class PlayerController : MonoBehaviour
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
             mousePos.z = 0f;
 
-            bool hitFishing = Physics2D.OverlapPoint(mousePos, fishingLayer);
-            bool hitBlocker = Physics2D.OverlapPoint(mousePos, fishingBlockerLayer);
-            bool hitBonus = Physics2D.OverlapPoint(mousePos, fishingBonusLayer);
+            // Block casting if clicking directly on a Bridge surface
+            Collider2D hitBlocker = Physics2D.OverlapPoint(mousePos, fishingBlockerLayer);
+            if (hitBlocker != null && hitBlocker.CompareTag("Bridge"))
+                return;
 
-            if (hitBonus)
+            // Must click on a valid fishing area
+            if (!Physics2D.OverlapPoint(mousePos, fishingLayer))
+                return;
+
+            Vector3 rootPos = fishingRodController.rodRoot.position;
+            rootPos.z = 0f;
+
+            // Clamp cast distance by max rod length
+            Vector3 dir = mousePos - rootPos;
+            float distance = dir.magnitude;
+
+            if (distance > fishingRodController.maxLength)
             {
-                fishingRodController.isInBonusZone = true;
-            }
-            else
-            {
-                fishingRodController.isInBonusZone = false;
+                dir = dir.normalized * fishingRodController.maxLength;
             }
 
-            if (hitFishing && !hitBlocker)
+            Vector3 targetPos = rootPos + dir;
+
+            // Raycast from rod root to target, ignoring Bridge blockers
+            RaycastHit2D[] hits = Physics2D.RaycastAll(
+                rootPos,
+                dir.normalized,
+                dir.magnitude,
+                fishingBlockerLayer
+            );
+
+            float nearestDist = float.MaxValue;
+            RaycastHit2D nearestHit = default;
+
+            foreach (var hit in hits)
             {
-                fishingRodController.Cast(mousePos);
+                if (hit.collider == null)
+                    continue;
+
+                // Ignore bridge collider during raycast
+                if (hit.collider.CompareTag("Bridge"))
+                    continue;
+
+                if (hit.distance < nearestDist)
+                {
+                    nearestDist = hit.distance;
+                    nearestHit = hit;
+                }
             }
+
+            if (nearestDist < float.MaxValue)
+            {
+                targetPos = nearestHit.point;
+            }
+
+            // Evaluate bonus zone at the final target position
+            fishingRodController.isInBonusZone =
+                Physics2D.OverlapPoint(targetPos, fishingBonusLayer);
+
+            fishingRodController.Cast(targetPos);
         }
         else if (fishingRodController.canRetract)
         {
@@ -396,6 +439,9 @@ public class PlayerController : MonoBehaviour
             GetTired(5);
         }
     }
+
+
+
 
     void UseTool()
     {

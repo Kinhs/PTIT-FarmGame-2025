@@ -73822,6 +73822,7 @@ MonoBehaviour:
   biteCircleStartAlpha: 0.1
   biteCircleStartScale: {x: 4, y: 4, z: 1}
   isInBonusZone: 0
+  maxLength: 10
 --- !u!1 &2076661208
 GameObject:
   m_ObjectHideFlags: 0

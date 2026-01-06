@@ -24,6 +24,8 @@ public class FishingRodController : MonoBehaviour
 
     [HideInInspector] public bool isInBonusZone;
 
+    public float maxLength = 20.0f;
+
     Coroutine moveRoutine;
     Coroutine biteRoutine;
 
