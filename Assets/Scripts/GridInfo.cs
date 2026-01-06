@@ -13,6 +13,7 @@ public class GridInfo : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            LoadFromSaveManager();
         }
         else
         {

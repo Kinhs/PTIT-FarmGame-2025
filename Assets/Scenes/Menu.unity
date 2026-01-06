@@ -1682,8 +1682,8 @@ MonoBehaviour:
     hasAxe: 1
     hasPickaxe: 1
     pumpkinSeed: 1
-    lettuceSeed: 0
-    carrotSeed: 0
+    lettuceSeed: 1
+    carrotSeed: 1
     haySeed: 0
     potatoSeed: 0
     strawberrySeed: 0
