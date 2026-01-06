@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
 
         UIController.instance.SwitchSeed(seedCropType);
 
-        stamina = new Stat(100, 100);
+        stamina = new Stat(250, 250);
         staminaBar.Set(stamina.currentValue, stamina.maxValue);
     }
 
@@ -452,7 +452,7 @@ public class PlayerController : MonoBehaviour
         else if (fishingRodController.canRetract)
         {
             fishingRodController.Retract();
-            GetTired(5);
+            GetTired(10);
         }
     }
 
