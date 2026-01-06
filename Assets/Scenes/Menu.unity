@@ -1678,9 +1678,9 @@ MonoBehaviour:
   Data:
     day: 1
     money: 500
-    hasFishingRod: 0
-    hasAxe: 0
-    hasPickaxe: 0
+    hasFishingRod: 1
+    hasAxe: 1
+    hasPickaxe: 1
     pumpkinSeed: 1
     lettuceSeed: 0
     carrotSeed: 0

@@ -390,7 +390,7 @@ public class PlayerController : MonoBehaviour
                 fishingRodController.Cast(mousePos);
             }
         }
-        else
+        else if (fishingRodController.canRetract)
         {
             fishingRodController.Retract();
             GetTired(5);
