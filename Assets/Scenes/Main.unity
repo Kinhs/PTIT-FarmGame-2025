@@ -6696,6 +6696,7 @@ MonoBehaviour:
   preventUse: 0
   cropType: 0
   growFailChance: 0
+  daysUnwatered: 0
 --- !u!1 &74473731
 GameObject:
   m_ObjectHideFlags: 0
@@ -7036,7 +7037,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &96988364
 Transform:
   m_ObjectHideFlags: 0
@@ -40523,7 +40524,7 @@ MonoBehaviour:
     ripe: {fileID: -6800931340347744238, guid: b6442a289c143044196d4aeda5e7ba25, type: 3}
     seedAmount: 5
     cropAmount: 0
-    growthFailChance: 20
+    growthFailChance: 80
     seedPrice: 1
     cropPrice: 3
   - cropType: 1
@@ -40535,7 +40536,7 @@ MonoBehaviour:
     ripe: {fileID: -862800679913824809, guid: b6442a289c143044196d4aeda5e7ba25, type: 3}
     seedAmount: 5
     cropAmount: 0
-    growthFailChance: 20
+    growthFailChance: 80
     seedPrice: 2
     cropPrice: 6
   - cropType: 2
@@ -40547,7 +40548,7 @@ MonoBehaviour:
     ripe: {fileID: 3390126664149698875, guid: b6442a289c143044196d4aeda5e7ba25, type: 3}
     seedAmount: 5
     cropAmount: 0
-    growthFailChance: 40
+    growthFailChance: 80
     seedPrice: 3
     cropPrice: 9
   - cropType: 3
@@ -40571,7 +40572,7 @@ MonoBehaviour:
     ripe: {fileID: -3800458654278106549, guid: b6442a289c143044196d4aeda5e7ba25, type: 3}
     seedAmount: 5
     cropAmount: 0
-    growthFailChance: 50
+    growthFailChance: 85
     seedPrice: 5
     cropPrice: 15
   - cropType: 5
@@ -64223,6 +64224,10 @@ PrefabInstance:
     - target: {fileID: 4912815064359791853, guid: 0427251303bdb2a4195c368bfc62ea37, type: 3}
       propertyPath: m_Name
       value: Area Switcher (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4912815064359791853, guid: 0427251303bdb2a4195c368bfc62ea37, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6770374635219124619, guid: 0427251303bdb2a4195c368bfc62ea37, type: 3}
       propertyPath: sceneToLoad

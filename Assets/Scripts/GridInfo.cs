@@ -23,6 +23,7 @@ public class GridInfo : MonoBehaviour
 
     public bool hasGrid;
     public List<InfoRow> theGrid;
+    private int maxDaysWithoutWater = 3;
 
     public void CreateGrid()
     {
@@ -45,6 +46,7 @@ public class GridInfo : MonoBehaviour
         theGrid[yPos].blocks[xPos].isWatered = theBlock.isWatered;
         theGrid[yPos].blocks[xPos].cropType = theBlock.cropType;
         theGrid[yPos].blocks[xPos].growFailChance = theBlock.growFailChance;
+        theGrid[yPos].blocks[xPos].daysUnwatered = theBlock.daysUnwatered;
 
     }
 
@@ -56,6 +58,7 @@ public class GridInfo : MonoBehaviour
             {
                 if (theGrid[y].blocks[x].isWatered == true)
                 {
+                    theGrid[y].blocks[x].daysUnwatered = 0;
 
                     float growFailTest = Random.Range(0f, 100f);
 
@@ -78,9 +81,16 @@ public class GridInfo : MonoBehaviour
                     }
 
                     theGrid[y].blocks[x].isWatered = false;
+                } 
+                else if (theGrid[y].blocks[x].currentStage != GrowBlock.GrowthStage.ploughed && theGrid[y].blocks[x].currentStage != GrowBlock.GrowthStage.barren)
+                {
+                    theGrid[y].blocks[x].daysUnwatered += 1;
+                    if (theGrid[y].blocks[x].daysUnwatered >= maxDaysWithoutWater)
+                    {
+                        theGrid[y].blocks[x].currentStage = GrowBlock.GrowthStage.ploughed;
+                    }
                 }
-
-                if (theGrid[y].blocks[x].currentStage == GrowBlock.GrowthStage.ploughed)
+                else if (theGrid[y].blocks[x].currentStage == GrowBlock.GrowthStage.ploughed)
                 {
                     theGrid[y].blocks[x].currentStage = GrowBlock.GrowthStage.barren;
                 }
@@ -123,7 +133,8 @@ public class GridInfo : MonoBehaviour
                     isWatered = source.isWatered,
                     currentStage = source.currentStage,
                     cropType = source.cropType,
-                    growFailChance = source.growFailChance
+                    growFailChance = source.growFailChance,
+                    daysUnwatered = source.daysUnwatered,
                 };
 
                 newRow.blocks.Add(newBlock);
@@ -157,7 +168,8 @@ public class GridInfo : MonoBehaviour
                     isWatered = source.isWatered,
                     currentStage = source.currentStage,
                     cropType = source.cropType,
-                    growFailChance = source.growFailChance
+                    growFailChance = source.growFailChance,
+                    daysUnwatered = source.daysUnwatered
                 };
 
                 newRow.blocks.Add(newBlock);
@@ -179,6 +191,7 @@ public class BlockInfo
     public CropController.CropType cropType;
     public float growFailChance;
 
+    public int daysUnwatered;
 }
 
 [System.Serializable]
