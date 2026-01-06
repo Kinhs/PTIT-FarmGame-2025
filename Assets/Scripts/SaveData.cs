@@ -6,8 +6,8 @@ using UnityEngine;
 public class SaveData
 {
     [Header("General")]
-    public int day;
-    public float money;
+    public int day = 1;
+    public float money = 10;
 
     [Header("Has Tools")]
     public bool hasFishingRod;
@@ -15,7 +15,7 @@ public class SaveData
     public bool hasPickaxe;
 
     [Header("Seeds")]
-    public int pumpkinSeed;
+    public int pumpkinSeed = 2;
     public int lettuceSeed;
     public int carrotSeed;
     public int haySeed;

@@ -6,6 +6,7 @@ public class MenuController : MonoBehaviour
     public string levelToStart;
 
     public GameObject tutorialPopup;
+    public GameObject restartPopup;
 
     private void Start()
     {
@@ -40,9 +41,28 @@ public class MenuController : MonoBehaviour
         AudioManager.instance.PlaySFXPitchAdjusted(6);
     }
 
+    public void ShowHideRestart()
+    {
+        if (restartPopup.activeSelf == false)
+        {
+            restartPopup.SetActive(true);
+        }
+        else
+        {
+            restartPopup.SetActive(false);
+        }
+        AudioManager.instance.PlaySFXPitchAdjusted(6);
+    }
+
     public void ShowHideSetting()
     {
 
         AudioManager.instance.PlaySFXPitchAdjusted(6);
+    }
+
+    public void RestartGame()
+    {
+        SaveManager.instance.Data = new();
+        SaveManager.instance.SaveGame();
     }
 }
