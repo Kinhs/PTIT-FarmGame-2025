@@ -20,10 +20,13 @@ public class FishingRodController : MonoBehaviour
 
     public bool isCast { get; private set; }
     public bool canCatch { get; private set; }
+    public bool canRetract { get; private set; }
 
     [HideInInspector] public bool isInBonusZone;
 
-    Vector3 castTarget;
+    public float maxLength = 20.0f;
+    public float minLength = 5.0f;
+
     Coroutine moveRoutine;
     Coroutine biteRoutine;
 
@@ -44,7 +47,7 @@ public class FishingRodController : MonoBehaviour
     public void Cast(Vector3 target)
     {
         isCast = true;
-        castTarget = target;
+        canRetract = true;
         ResetBite();
 
         if (moveRoutine != null) StopCoroutine(moveRoutine);
@@ -56,6 +59,8 @@ public class FishingRodController : MonoBehaviour
     public void Retract()
     {
         if (!isCast) return;
+
+        canRetract = false;
 
         if (canCatch && selectedFish != null)
         {
@@ -107,7 +112,7 @@ public class FishingRodController : MonoBehaviour
         float waitTime = Random.Range(biteTimeMin, biteTimeMax);
         if (isInBonusZone)
         {
-            waitTime /= 2;
+            waitTime /= 3;
         }
 
         yield return new WaitForSeconds(waitTime);

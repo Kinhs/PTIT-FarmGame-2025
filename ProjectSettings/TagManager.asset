@@ -8,6 +8,7 @@ TagManager:
   - Tree
   - Ore
   - Enemy
+  - Bridge
   layers:
   - Default
   - TransparentFX
