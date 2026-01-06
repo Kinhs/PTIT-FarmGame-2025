@@ -3,7 +3,7 @@ using UnityEngine;
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager instance;
-
+    public bool useSaveFile;
     public SaveData Data;
 
     void Awake()
@@ -12,7 +12,13 @@ public class SaveManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            LoadGame();
+
+            Data = useSaveFile ? SaveSystem.Load() : new SaveData();
+
+            if (useSaveFile)
+            {
+                Debug.Log("Using save file at: " + Application.persistentDataPath);
+            }
         }
         else
         {
@@ -20,13 +26,11 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    public void LoadGame()
-    {
-        //Data = SaveSystem.Load();
-    }
-
     public void SaveGame()
     {
-        //SaveSystem.Save(Data);
+        if (useSaveFile)
+        {
+            SaveSystem.Save(Data);
+        }
     }
 }

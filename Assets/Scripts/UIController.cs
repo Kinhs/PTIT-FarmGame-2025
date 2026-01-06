@@ -157,6 +157,8 @@ public class UIController : MonoBehaviour
 
         AudioManager.instance.PlayTitle();
         AudioManager.instance.PlaySFXPitchAdjusted(6);
+
+        SaveManager.instance.SaveGame();
     }
 
     public IEnumerator FadeIn()
