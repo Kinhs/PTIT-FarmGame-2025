@@ -8,11 +8,6 @@ public class GridController : MonoBehaviour
     private void Awake()
     {
         instance = this;
-
-        if (GridInfo.instance != null && SaveManager.instance != null)
-        {
-            GridInfo.instance.LoadFromSaveManager();
-        }
     }
 
     public Transform minPoint, maxPoint;
