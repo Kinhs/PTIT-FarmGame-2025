@@ -388,10 +388,18 @@ public class PlayerController : MonoBehaviour
             Vector3 dir = mousePos - rootPos;
             float distance = dir.magnitude;
 
-            if (distance > fishingRodController.maxLength)
+            float ratio = (float)stamina.currentValue / stamina.maxValue;
+            float currentMaxLength = Mathf.Lerp(
+                fishingRodController.minLength,
+                fishingRodController.maxLength,
+                ratio
+            );
+
+            if (distance > currentMaxLength)
             {
-                dir = dir.normalized * fishingRodController.maxLength;
+                dir = dir.normalized * currentMaxLength;
             }
+
 
             Vector3 targetPos = rootPos + dir;
 
@@ -427,9 +435,15 @@ public class PlayerController : MonoBehaviour
                 targetPos = nearestHit.point;
             }
 
+            // Final validation
+            Collider2D finalBlocker = Physics2D.OverlapPoint(targetPos, fishingBlockerLayer);
+
+            if (finalBlocker != null) return;
+
             // Evaluate bonus zone at the final target position
             fishingRodController.isInBonusZone =
                 Physics2D.OverlapPoint(targetPos, fishingBonusLayer);
+
 
             fishingRodController.Cast(targetPos);
         }
