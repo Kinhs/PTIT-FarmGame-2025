@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
 
     public Rigidbody2D theRB;
     public float moveSpeed;
+    public float minMoveSpeed;
+    public float maxMoveSpeed;
 
     public InputActionReference moveInput, actioninput;
 
@@ -178,6 +180,8 @@ public class PlayerController : MonoBehaviour
         else
         {
             //theRB.linearVelocity = new Vector2(moveSpeed, 0f);
+            float staminaRatio = (float)stamina.currentValue / stamina.maxValue;
+            moveSpeed = Mathf.Lerp(minMoveSpeed, maxMoveSpeed, staminaRatio);
             theRB.linearVelocity = moveInput.action.ReadValue<Vector2>().normalized * moveSpeed;
 
             if (!fishingRodController.isCast)
