@@ -2091,7 +2091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae08518594982f468cf66065b068104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveManager
-  useSaveFile: 0
+  useSaveFile: 1
   Data:
     day: 1
     money: 500
