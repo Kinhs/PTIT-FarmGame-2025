@@ -108,7 +108,7 @@ public class GrowBlock : MonoBehaviour
     {
         if (preventUse == false)
         {
-            if (isWatered == false)
+            if (isWatered == false && currentStage ==  GrowthStage.ploughed)
             {
                 PlayerController.instance.GetTired(5);
                 isWatered = true;
