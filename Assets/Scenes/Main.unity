@@ -40524,7 +40524,7 @@ MonoBehaviour:
     ripe: {fileID: -6800931340347744238, guid: b6442a289c143044196d4aeda5e7ba25, type: 3}
     seedAmount: 5
     cropAmount: 0
-    growthFailChance: 80
+    growthFailChance: 10
     seedPrice: 1
     cropPrice: 3
   - cropType: 1
@@ -40536,7 +40536,7 @@ MonoBehaviour:
     ripe: {fileID: -862800679913824809, guid: b6442a289c143044196d4aeda5e7ba25, type: 3}
     seedAmount: 5
     cropAmount: 0
-    growthFailChance: 80
+    growthFailChance: 12
     seedPrice: 2
     cropPrice: 6
   - cropType: 2
@@ -40548,7 +40548,7 @@ MonoBehaviour:
     ripe: {fileID: 3390126664149698875, guid: b6442a289c143044196d4aeda5e7ba25, type: 3}
     seedAmount: 5
     cropAmount: 0
-    growthFailChance: 80
+    growthFailChance: 15
     seedPrice: 3
     cropPrice: 9
   - cropType: 3
@@ -40560,7 +40560,7 @@ MonoBehaviour:
     ripe: {fileID: -3800458654278106549, guid: b6442a289c143044196d4aeda5e7ba25, type: 3}
     seedAmount: 5
     cropAmount: 0
-    growthFailChance: 50
+    growthFailChance: 17
     seedPrice: 4
     cropPrice: 12
   - cropType: 4
@@ -40572,7 +40572,7 @@ MonoBehaviour:
     ripe: {fileID: -3800458654278106549, guid: b6442a289c143044196d4aeda5e7ba25, type: 3}
     seedAmount: 5
     cropAmount: 0
-    growthFailChance: 85
+    growthFailChance: 20
     seedPrice: 5
     cropPrice: 15
   - cropType: 5
@@ -40584,7 +40584,7 @@ MonoBehaviour:
     ripe: {fileID: 6984442412936397737, guid: b6442a289c143044196d4aeda5e7ba25, type: 3}
     seedAmount: 5
     cropAmount: 0
-    growthFailChance: 60
+    growthFailChance: 22
     seedPrice: 6
     cropPrice: 18
   - cropType: 6
@@ -40596,7 +40596,7 @@ MonoBehaviour:
     ripe: {fileID: 1975525465, guid: b6442a289c143044196d4aeda5e7ba25, type: 3}
     seedAmount: 5
     cropAmount: 0
-    growthFailChance: 70
+    growthFailChance: 25
     seedPrice: 7
     cropPrice: 21
   - cropType: 7
@@ -40608,7 +40608,7 @@ MonoBehaviour:
     ripe: {fileID: 1975525465, guid: b6442a289c143044196d4aeda5e7ba25, type: 3}
     seedAmount: 5
     cropAmount: 0
-    growthFailChance: 70
+    growthFailChance: 30
     seedPrice: 8
     cropPrice: 24
 --- !u!4 &324977363
@@ -53338,7 +53338,7 @@ MonoBehaviour:
   currentTime: 0
   dayStart: 6
   dayEnd: 24
-  timeSpeed: 0.25
+  timeSpeed: 0.125
   currentDay: 1
   dayEndScene: Day End
   globalLight: {fileID: 0}
