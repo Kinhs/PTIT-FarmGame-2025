@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ConstructionData
   type: 1
   moneyCost: 200
-  woodCost: 30
-  stoneCost: 30
-  dailyIncome: 20
+  woodCost: 15
+  stoneCost: 15
+  dailyIncome: 30

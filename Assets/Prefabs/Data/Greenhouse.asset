@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Greenhouse
   m_EditorClassIdentifier: Assembly-CSharp::ConstructionData
   type: 2
-  moneyCost: 300
-  woodCost: 70
-  stoneCost: 50
-  dailyIncome: 30
+  moneyCost: 400
+  woodCost: 20
+  stoneCost: 20
+  dailyIncome: 50

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hydroelectric
   m_EditorClassIdentifier: Assembly-CSharp::ConstructionData
   type: 3
-  moneyCost: 500
-  woodCost: 100
-  stoneCost: 100
-  dailyIncome: 40
+  moneyCost: 700
+  woodCost: 30
+  stoneCost: 30
+  dailyIncome: 70
