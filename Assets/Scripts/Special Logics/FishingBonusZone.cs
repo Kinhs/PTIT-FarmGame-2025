@@ -39,11 +39,13 @@ public class FishingBonusZone : MonoBehaviour
 
         if (isActiveState)
         {
+            zone.gameObject.SetActive(true);
             currentAlpha = Mathf.MoveTowards(currentAlpha, maxAlpha, fadeSpeed * Time.deltaTime);
         }
         else
         {
             currentAlpha = Mathf.MoveTowards(currentAlpha, 0f, fadeSpeed * Time.deltaTime);
+            if (currentAlpha <= 0.1f) zone.gameObject.SetActive(false);
         }
 
         SetAlpha(currentAlpha);

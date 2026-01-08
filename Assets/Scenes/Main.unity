@@ -53338,7 +53338,7 @@ MonoBehaviour:
   currentTime: 0
   dayStart: 6
   dayEnd: 24
-  timeSpeed: 0.25
+  timeSpeed: 0.125
   currentDay: 1
   dayEndScene: Day End
   globalLight: {fileID: 0}

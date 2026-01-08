@@ -35,6 +35,7 @@ public class FishingRodController : MonoBehaviour
 
     FishInfo selectedFish;
 
+
     void Awake()
     {
         if (biteCircle != null)
@@ -138,7 +139,7 @@ public class FishingRodController : MonoBehaviour
 
         float t = 0f;
         canCatch = false;
-
+        //bool successRoll = Random.value < 0.5f;
         while (t < duration)
         {
             t += Time.deltaTime;
@@ -153,7 +154,7 @@ public class FishingRodController : MonoBehaviour
                 biteCircleRenderer.color = c;
             }
 
-            if (t >= duration * 0.8f)
+            if (t >= duration * 0.8f)// && successRoll)
                 canCatch = true;
 
             yield return null;

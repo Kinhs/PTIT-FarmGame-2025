@@ -35,11 +35,13 @@ public class DayEndController : MonoBehaviour
         FishController.instance.SaveToSaveManager();
         MaterialController.instance.SaveToSaveManager();
         GridInfo.instance.SaveToSaveManager();
+
+        SaveManager.instance.SaveGame();
     }
 
     private void Update()
     {
-        if (Keyboard.current.anyKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)
+        if (Keyboard.current.anyKey.wasPressedThisFrame)
         {
             
             TimeController.instance.StartDay();

@@ -197,4 +197,12 @@ public class UIController : MonoBehaviour
 
         AudioManager.instance.PlaySFXPitchAdjusted(6);
     }
+
+    public bool IsUIShowing()
+    {
+        return theIC.gameObject.activeSelf
+            || theShop.gameObject.activeSelf
+            || fishShop.gameObject.activeSelf
+            || toolShop.gameObject.activeSelf;
+    }
 }

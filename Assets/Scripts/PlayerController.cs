@@ -349,6 +349,9 @@ public class PlayerController : MonoBehaviour
             ShowTiredEmote();
             return;
         }
+
+        if (UIController.instance.IsUIShowing()) return;
+
         pickaxeController.Use();
     }
 
@@ -359,11 +362,16 @@ public class PlayerController : MonoBehaviour
             ShowTiredEmote();
             return;
         }
+
+        if (UIController.instance.IsUIShowing()) return;
+
         axeController.Use();
     }
 
     void UseFishingRod()
     {
+        if (UIController.instance.IsUIShowing()) return;
+
         if (!fishingRodController.isCast)
         {
             if (isExhausted)
